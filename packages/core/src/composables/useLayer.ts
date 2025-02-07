@@ -3,7 +3,6 @@ import { inject, onUnmounted } from 'vue'
 import { addLayerSymbol, removeLayerSymbol } from '@/shared/constants.ts'
 
 export const useLayer = (layerFactory: () => Layer) => {
-
   // Inject Deck.gl layer management functions
   const addLayer = inject(addLayerSymbol) as (layer: Layer) => void
   const removeLayer = inject(removeLayerSymbol) as (layer: Layer) => void
@@ -11,7 +10,9 @@ export const useLayer = (layerFactory: () => Layer) => {
   // Create and register the new layer
   const layer = layerFactory()
   if (!addLayer || !removeLayer) {
-    throw new Error('DeckGL context is missing. Ensure you are using this within a DeckGL parent component.')
+    throw new Error(
+      'DeckGL context is missing. Ensure you are using this within a DeckGL parent component.',
+    )
   }
   addLayer(layer)
 
