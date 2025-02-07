@@ -153,13 +153,3 @@ export const deckPropsKeys: Array<keyof DeckOptions> = [
   'getTooltip',
   'debug',
 ]
-
-export function genDeckOpts(props: Partial<DeckOptions>): DeckOptions {
-  for (const opt of Object.keys(props) as Array<keyof DeckOptions>) {
-    if (props[opt] === undefined || !deckPropsKeys.includes(opt)) {
-      delete props[opt]
-    }
-  }
-
-  return props
-}
