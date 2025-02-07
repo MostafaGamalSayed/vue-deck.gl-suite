@@ -8,7 +8,7 @@ export const baseLayerProps: ComponentPropsOptions = {
     required: true,
   },
   data: {
-    type: [Object, String] as PropType<LayerProps['data']>
+    type: [Object, String] as PropType<LayerProps['data']>,
   },
   visible: {
     type: Boolean as PropType<LayerProps['visible']>,
@@ -21,35 +21,11 @@ export const baseLayerProps: ComponentPropsOptions = {
   extensions: {
     type: Array as PropType<LayerProps['extensions']>,
   },
-  onError: {
-    type: Function as unknown as PropType<LayerProps['onError']>,
-    default: undefined,
-  },
 
   // Interaction Properties
   pickable: {
     type: Boolean as PropType<LayerProps['pickable']>,
     default: false,
-  },
-  onHover: {
-    type: Function as unknown as PropType<LayerProps['onHover']>,
-    default: undefined,
-  },
-  onClick: {
-    type: Function as unknown as PropType<LayerProps['onClick']>,
-    default: undefined,
-  },
-  onDragStart: {
-    type: Function as unknown as PropType<LayerProps['onDragStart']>,
-    default: undefined,
-  },
-  onDrag: {
-    type: Function as unknown as PropType<LayerProps['onDrag']>,
-    default: undefined,
-  },
-  onDragEnd: {
-    type: Function as unknown as PropType<LayerProps['onDragEnd']>,
-    default: undefined,
   },
   highlightColor: {
     type: [Array, Function] as PropType<LayerProps['highlightColor']>,
@@ -84,7 +60,7 @@ export const baseLayerProps: ComponentPropsOptions = {
 
   // data properties
   dataComparator: {
-    type: Function as unknown as PropType<LayerProps['dataComparator']>
+    type: Function as unknown as PropType<LayerProps['dataComparator']>,
   },
   _dataDiff: {
     type: Function as unknown as PropType<LayerProps['_dataDiff']>,
@@ -95,11 +71,11 @@ export const baseLayerProps: ComponentPropsOptions = {
   },
   positionFormat: {
     type: String as PropType<LayerProps['positionFormat']>,
-    default: "XYZ",
+    default: 'XYZ',
   },
   colorFormat: {
     type: String as PropType<LayerProps['colorFormat']>,
-    default: "RGBA",
+    default: 'RGBA',
   },
   numInstances: {
     type: Number as PropType<LayerProps['numInstances']>,
@@ -109,3 +85,24 @@ export const baseLayerProps: ComponentPropsOptions = {
     type: Object as PropType<LayerProps['updateTriggers']>,
   },
 }
+export const baseLayerKeys: (keyof LayerProps)[] = [
+  'id',
+  'data',
+  'visible',
+  'opacity',
+  'extensions',
+  'pickable',
+  'highlightColor',
+  'highlightedObjectIndex',
+  'autoHighlight',
+  'coordinateSystem',
+  'coordinateOrigin',
+  'wrapLongitude',
+  'modelMatrix',
+  'dataComparator',
+  '_dataDiff',
+  'dataTransform',
+  'positionFormat',
+  'colorFormat',
+  'numInstances',
+]

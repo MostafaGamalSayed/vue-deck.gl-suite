@@ -1,4 +1,24 @@
-import type { DeckProps } from '@deck.gl/core'
+import type { Deck, DeckProps, Layer, LayerProps } from '@deck.gl/core'
+import {
+  ArcLayer,
+  type ArcLayerProps,
+  BitmapLayer,
+  type BitmapLayerProps,
+  ColumnLayer,
+  type ColumnLayerProps,
+  GeoJsonLayer,
+  type GeoJsonLayerProps,
+  IconLayer,
+  type IconLayerProps,
+  LineLayer,
+  type LineLayerProps,
+  PathLayer,
+  type PathLayerProps,
+  PolygonLayer,
+  type PolygonLayerProps,
+  ScatterplotLayer,
+  type ScatterplotLayerProps,
+} from '@deck.gl/layers'
 
 export type DeckOptions = Omit<
   DeckProps,
@@ -17,3 +37,47 @@ export type DeckOptions = Omit<
   | 'onResize'
   | '_onMetrics'
 >
+
+export type LayerOptions = Omit<
+  LayerProps,
+  | 'onHover'
+  | 'onClick'
+  | 'onDrag'
+  | 'onDragStart'
+  | 'onDragEnd'
+  | 'onDataLoad'
+  | 'onError'
+>
+
+export type WithoutLayerEvents<T> = Omit<
+  T,
+  | 'onHover'
+  | 'onClick'
+  | 'onDrag'
+  | 'onDragStart'
+  | 'onDragEnd'
+  | 'onDataLoad'
+  | 'onError'
+>
+
+export type DeckLayerProps =
+  | WithoutLayerEvents<ArcLayerProps>
+  | WithoutLayerEvents<GeoJsonLayerProps>
+  | WithoutLayerEvents<BitmapLayerProps>
+  | WithoutLayerEvents<ColumnLayerProps>
+  | WithoutLayerEvents<LineLayerProps>
+  | WithoutLayerEvents<PolygonLayerProps>
+  | WithoutLayerEvents<ScatterplotLayerProps>
+  | WithoutLayerEvents<PathLayerProps>
+  | WithoutLayerEvents<IconLayerProps>
+
+export type DeckLayer =
+  | ArcLayer
+  | GeoJsonLayer
+  | BitmapLayer
+  | ColumnLayer
+  | LineLayer
+  | PolygonLayer
+  | ScatterplotLayer
+  | PathLayer
+  | IconLayer
