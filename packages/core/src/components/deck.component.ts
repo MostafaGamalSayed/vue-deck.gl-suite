@@ -10,43 +10,49 @@ import {
   type SlotsType,
   watch,
 } from 'vue'
-import { deckProps, genDeckOpts } from '../lib/deck.lib.ts'
-import { Deck, type DeckProps} from '@deck.gl/core'
-import { deckInstanceSymbol } from '@/shared/constants.ts'
-import type { DeckOptions } from '@/shared/types.ts'
+import { deckProps } from '../lib/deck.lib.ts'
+import { Deck, type DeckProps, Layer } from '@deck.gl/core'
+import { addLayerSymbol, deckInstanceSymbol, removeLayerSymbol } from '@/shared/constants.ts'
+import { genDeckOpts } from '@/utils'
 
 export default defineComponent({
   name: 'DeckGL',
-  props: { ...deckProps },
-  slots: Object as SlotsType<{ default: unknown }>,
+  props: { ...deckProps }, // Component props derived from the shared `deckProps`
+  slots: Object as SlotsType<{ default: unknown }>, // Define default slot type for content inside the component
   emits: [
-    'load',
-    'click',
-    'hover',
-    'drag',
-    'dragStart',
-    'dragEnd',
-    'deviceInitialized',
-    'beforeRender',
-    'afterRender',
-    'interactionStateChange',
-    'viewStateChange',
-    'error',
-    'resize',
-    'metrics',
+    'load', // Deck instance successfully loads
+    'click', // User clicks on the deck
+    'hover', // Mouse hovers over the deck
+    'drag', // Drag events on the deck
+    'dragStart', // Dragging begins
+    'dragEnd', // Dragging ends
+    'deviceInitialized', // GPU/Device successfully initialized
+    'beforeRender', // Event triggered before rendering
+    'afterRender', // Event triggered after rendering
+    'interactionStateChange', // Triggered when interaction state updates
+    'viewStateChange', // Changes in view state
+    'error', // Catches runtime errors in layers
+    'resize', // Canvas resize event
+    'metrics', // Performance metrics reporting
   ],
-  setup(props: DeckOptions, ctx) {
+  setup(props: DeckProps, ctx) {
     const canvasRef = shallowRef<HTMLCanvasElement>()
     const deckInstance: Ref<Deck | null> = ref(null)
-    const isInitialized = ref(false)
-    const isLoaded = ref(false)
-    const layers: Ref<DeckProps['layers']> = ref([])
+    const isInitialized = ref(false) // Reactively tracks if the Deck instance is initialized
+    const layers: Ref<DeckProps['layers']> = ref([]) // Reactive state for layers
 
-    provide(deckInstanceSymbol, deckInstance)
-    provide('addLayer', (layer: DeckProps['layers']) => {
-      layers.value?.push(layer)
+    // Provide Deck instance and helper methods to descendants
+    provide(deckInstanceSymbol, deckInstance) // Share deck instance with child components
+    provide(addLayerSymbol, (layer: Layer) => {
+      // Function to add layers dynamically
+      if (layer) layers.value?.push(layer)
+    })
+    provide(removeLayerSymbol, (layer: Layer) => {
+      // Function to remove layers dynamically
+      layers.value = layers.value?.filter((item) => item !== layer)
     })
 
+    // Reactively updates `layers` state when the `layers` prop changes
     watch(
       () => props.layers,
       (newLayers) => {
@@ -55,100 +61,77 @@ export default defineComponent({
       { deep: true },
     )
 
+    // Syncs changes in `layers` to the Deck.gl instance
     watch(
       () => layers.value,
       (newLayers) => {
-        deckInstance.value?.setProps({ layers: newLayers })
-        console.log('layers changed', layers.value)
+        if (deckInstance.value) {
+          deckInstance.value.setProps({ layers: newLayers })
+        }
       },
       { deep: true },
     )
 
+    // Watches and applies changes to the `viewState` prop
     watch(
       () => props.viewState,
       (newViewState) => {
-        deckInstance.value?.setProps({ viewState: newViewState })
+        if (deckInstance.value) {
+          deckInstance.value.setProps({ viewState: newViewState })
+        }
       },
       { deep: true },
     )
 
+    // Initializes the Deck.gl instance and configures its options
     function initialize() {
-      const opts: Partial<DeckOptions> = genDeckOpts({ ...props })
-
-      if (opts['layers']) {
-        layers.value?.push(opts['layers'])
-        delete opts['layers']
-      }
+      const opts: Partial<DeckProps> = genDeckOpts({ ...props }) // Normalize props into Deck.gl options
+      delete opts['layers'] // Handle `layers` separately
 
       deckInstance.value = new Deck({
         ...opts,
         canvas: canvasRef.value,
-        layers: layers.value,
-        onLoad: () => {
-          ctx.emit('load')
-          isLoaded.value = true
-        },
-        onClick: (info, event) => {
-          ctx.emit('click', { info, event })
-        },
-        onHover: (info, event) => {
-          ctx.emit('hover', { info, event })
-        },
-        onDrag: (info, event) => {
-          ctx.emit('drag', { info, event })
-        },
-        onDragStart: (info, event) => {
-          ctx.emit('dragStart', { info, event })
-        },
-        onDragEnd: (info, event) => {
-          ctx.emit('dragEnd', { info, event })
-        },
-        onDeviceInitialized: (device) => {
-          ctx.emit('deviceInitialized', device)
-        },
-        onBeforeRender: ({ device, gl }) => {
-          ctx.emit('beforeRender', { device, gl })
-        },
-        onAfterRender: ({ device, gl }) => {
-          ctx.emit('afterRender', { device, gl })
-        },
-        onInteractionStateChange: (state) => {
-          ctx.emit('interactionStateChange', state)
-        },
-        onViewStateChange: ({ viewState, oldViewState, viewId, interactionState }) => {
-          ctx.emit('viewStateChange', { viewState, viewId, interactionState, oldViewState })
-        },
-        onError: (error, layer?) => {
-          ctx.emit('error', { error, layer })
-        },
-        onResize: ({ width, height }) => {
-          ctx.emit('resize', { width, height })
-        },
-        _onMetrics: (metrics) => {
-          ctx.emit('metrics', metrics)
-        },
+        onLoad: () => ctx.emit('load'),
+        onClick: (info, event) => ctx.emit('click', { info, event }),
+        onHover: (info, event) => ctx.emit('hover', { info, event }),
+        onDrag: (info, event) => ctx.emit('drag', { info, event }),
+        onDragStart: (info, event) => ctx.emit('dragStart', { info, event }),
+        onDragEnd: (info, event) => ctx.emit('dragEnd', { info, event }),
+        onDeviceInitialized: (device) => ctx.emit('deviceInitialized', device),
+        onBeforeRender: ({ device, gl }) => ctx.emit('beforeRender', { device, gl }),
+        onAfterRender: ({ device, gl }) => ctx.emit('afterRender', { device, gl }),
+        onInteractionStateChange: (state) => ctx.emit('interactionStateChange', state),
+        onViewStateChange: ({ viewState, oldViewState, viewId, interactionState }) =>
+          ctx.emit('viewStateChange', { viewState, viewId, interactionState, oldViewState }),
+        onError: (error, layer?) => ctx.emit('error', { error, layer }),
+        onResize: ({ width, height }) => ctx.emit('resize', { width, height }),
+        _onMetrics: (metrics) => ctx.emit('metrics', metrics),
       })
 
-      isInitialized.value = true
+      isInitialized.value = true // Mark initialization as complete
+      layers.value = Array.isArray(props.layers) ? props.layers : [] // Set initial layers from props
     }
 
+    // Initialize Deck.gl instance
     onMounted(() => {
-      if (!canvasRef) return
-
+      if (!canvasRef.value) throw new Error('Canvas was not initialized')
       initialize()
     })
 
+    // Cleans up the Deck instance on component unmount
     onBeforeUnmount(() => {
       if (deckInstance.value) {
-        deckInstance.value!.finalize()
+        deckInstance.value.finalize()
         deckInstance.value = null
       }
     })
 
+    // Expose Deck instance for external access (e.g., parent components)
     ctx.expose({
       deckInstance,
     })
 
+    // Render function: Renders the canvas and optional slot content
     return () => [
       h('canvas', {
         id: props.id,
