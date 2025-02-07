@@ -7,26 +7,16 @@ import { useLayer } from '@/composables/useLayer.ts'
 export default defineComponent({
   name: 'ArcLayer',
   props: { ...arcLayerProps },
-  emits: [
-    'hover',
-    'click',
-    'drag',
-    'dragStart',
-    'dragEnd',
-    'dataLoad',
-    'error',
-  ],
+  emits: ['hover', 'click', 'drag', 'dragStart', 'dragEnd', 'dataLoad', 'error'],
   setup(props: ArcLayerProps, { emit }) {
     function initialize() {
       const opts: Partial<ArcLayerProps> = genDeckLayerOpts({ ...props }, arcPropsKeys, emit)
 
-      useLayer(
-        () => (new ArcLayer(opts))
-      )
+      useLayer(() => new ArcLayer(opts))
     }
 
     onMounted(initialize)
 
     return () => []
-  }
+  },
 })
