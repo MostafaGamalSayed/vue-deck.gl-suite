@@ -14,7 +14,10 @@ export function genDeckOpts(props: Partial<DeckOptions>): DeckOptions {
 export function genDeckLayerOpts<T extends DeckLayerProps>(
   props: T,
   validProps: Array<keyof T>,
-  emit: (event: 'click' | 'hover' | 'drag' | 'dragStart' | 'dragEnd' | 'error' | 'dataLoad', ...args: any[]) => void
+  emit: (
+    event: 'click' | 'hover' | 'drag' | 'dragStart' | 'dragEnd' | 'error' | 'dataLoad',
+    ...args: any[]
+  ) => void,
 ): Partial<T> {
   for (const opt of Object.keys(props) as Array<keyof T>) {
     if (props[opt] === undefined || !validProps.includes(opt)) {
@@ -29,6 +32,6 @@ export function genDeckLayerOpts<T extends DeckLayerProps>(
     onDragStart: (...args: any[]) => emit('dragStart', ...args),
     onDragEnd: (...args: any[]) => emit('dragEnd', ...args),
     onError: (...args: any[]) => emit('error', ...args),
-    onDataLoad: (...args: any[]) => emit('dataLoad', ...args)
+    onDataLoad: (...args: any[]) => emit('dataLoad', ...args),
   }
 }
