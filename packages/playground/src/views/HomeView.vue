@@ -1,14 +1,8 @@
 <script setup>
-import { DeckGL } from "@vue-deckgl-suite/core"
+import { DeckGL, ArcLayer } from "@vue-deckgl-suite/core"
 import { ColumnLayer } from '@deck.gl/layers'
 
-const initialViewState = {
-  longitude: -122.4,
-  latitude: 37.74,
-  zoom: 11
-}
-
-const layer = new ColumnLayer({
+const layers = new ColumnLayer({
   id: 'ColumnLayer',
   data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json',
   diskResolution: 12,
@@ -18,11 +12,12 @@ const layer = new ColumnLayer({
   getElevation: d => d.value,
   getFillColor: d => [48, 128, d.value * 255, 255],
   getPosition: d => d.centroid,
-  pickable: true
 });
 
-function printMsg(msg) {
-  console.log(msg)
+const initialViewState = {
+  longitude: -122.4,
+  latitude: 37.74,
+  zoom: 11
 }
 </script>
 
@@ -30,8 +25,21 @@ function printMsg(msg) {
   <main>
     <DeckGL
       :initial-view-state="initialViewState"
-      :layers="[layer]"
-      @click="printMsg"
-    />
+      :controller="true"
+      :layers="[layers]"
+      :getTooltip="({object}) => object && `${object.from.name} to ${object.to.name}`"
+    >
+      <ArcLayer
+        id="ArcLayer"
+        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json"
+        :getSourcePosition="d => d.from.coordinates"
+        :getTargetPosition="d => d.to.coordinates"
+        :getSourceColor="d => [Math.sqrt(d.inbound), 140, 0]"
+        :getTargetColor="d => [Math.sqrt(d.outbound), 140, 0]"
+        :getWidth="12"
+        :pickable="true"
+        @click="(info, event) => console.log(info, event)"
+      />
+    </DeckGL>
   </main>
 </template>
