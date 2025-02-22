@@ -1,4 +1,4 @@
-import type { Deck, DeckProps, Layer, LayerProps } from '@deck.gl/core'
+import type { DeckProps, LayerProps } from '@deck.gl/core'
 import {
   ArcLayer,
   type ArcLayerProps,
@@ -14,6 +14,8 @@ import {
   type LineLayerProps,
   PathLayer,
   type PathLayerProps,
+  type PointCloudLayer,
+  type PointCloudLayerProps,
   PolygonLayer,
   type PolygonLayerProps,
   ScatterplotLayer,
@@ -40,24 +42,12 @@ export type DeckOptions = Omit<
 
 export type LayerOptions = Omit<
   LayerProps,
-  | 'onHover'
-  | 'onClick'
-  | 'onDrag'
-  | 'onDragStart'
-  | 'onDragEnd'
-  | 'onDataLoad'
-  | 'onError'
+  'onHover' | 'onClick' | 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDataLoad' | 'onError'
 >
 
 export type WithoutLayerEvents<T> = Omit<
   T,
-  | 'onHover'
-  | 'onClick'
-  | 'onDrag'
-  | 'onDragStart'
-  | 'onDragEnd'
-  | 'onDataLoad'
-  | 'onError'
+  'onHover' | 'onClick' | 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDataLoad' | 'onError'
 >
 
 export type DeckLayerProps =
@@ -70,6 +60,7 @@ export type DeckLayerProps =
   | WithoutLayerEvents<ScatterplotLayerProps>
   | WithoutLayerEvents<PathLayerProps>
   | WithoutLayerEvents<IconLayerProps>
+  | WithoutLayerEvents<PointCloudLayerProps>
 
 export type DeckLayer =
   | ArcLayer
@@ -81,3 +72,4 @@ export type DeckLayer =
   | ScatterplotLayer
   | PathLayer
   | IconLayer
+  | PointCloudLayer
