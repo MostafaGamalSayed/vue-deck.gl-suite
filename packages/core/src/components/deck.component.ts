@@ -10,7 +10,7 @@ import {
   type SlotsType,
   watch,
 } from 'vue'
-import { deckProps } from '../lib/deck.lib.ts'
+import { deckProps, deckPropsKeys } from '../lib/deck.lib.ts'
 import { Deck, type DeckProps, Layer } from '@deck.gl/core'
 import { addLayerSymbol, deckInstanceSymbol, removeLayerSymbol } from '@/shared/constants.ts'
 import { genDeckOpts } from '@/utils'
@@ -85,7 +85,7 @@ export default defineComponent({
 
     // Initializes the Deck.gl instance and configures its options
     function initialize() {
-      const opts: Partial<DeckProps> = genDeckOpts({ ...props }) // Normalize props into Deck.gl options
+      const opts: Partial<DeckProps> = genDeckOpts<DeckProps>({ ...props }, deckPropsKeys) // Normalize props into Deck.gl options
       delete opts['layers'] // Handle `layers` separately
 
       deckInstance.value = new Deck({
