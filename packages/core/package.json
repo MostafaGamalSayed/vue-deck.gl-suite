@@ -5,14 +5,17 @@
   "type": "module",
   "main": "dist/vue-deckgl-suite-core.umd.js",
   "module": "dist/vue-deckgl-suite-core.es.js",
+  "types": "dist/main.d.ts",
+  "web-types": "dist/web-types.json",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "vite build && vue-docgen-web-types --configFile web-types.config.cjs",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -33,13 +36,16 @@
     "vite": "^6.0.11",
     "vite-plugin-vue-devtools": "^7.7.0",
     "vue": "^3.5.13",
-    "@deck.gl/core": "^9.1.0",
-    "@deck.gl/layers": "^9.1.0",
-    "vue-tsc": "^2.2.0"
+    "@deck.gl/core": "^9.1.1",
+    "@deck.gl/layers": "^9.1.1",
+    "vue-tsc": "^2.2.0",
+    "vite-plugin-dts": "^4.5.0",
+    "vue-docgen-web-types": "^0.1.8"
+
   },
   "peerDependencies": {
-    "@deck.gl/core": "^9.1.0",
-    "@deck.gl/layers": "^9.1.0",
+    "@deck.gl/core": "^9.1.1",
+    "@deck.gl/layers": "^9.1.1",
     "vue": "^3.5.13"
   }
 }
