@@ -1,9 +1,8 @@
-import type { DeckLayerProps, DeckOptions } from '@/shared/types.ts'
-import { deckPropsKeys } from '@/lib/deck.lib.ts'
+import type { DeckLayerProps } from '@/shared/types.ts'
 
-export function genDeckOpts(props: Partial<DeckOptions>): DeckOptions {
-  for (const opt of Object.keys(props) as Array<keyof DeckOptions>) {
-    if (props[opt] === undefined || !deckPropsKeys.includes(opt)) {
+export function genDeckOpts<T>(props: Partial<T>, validProps: (keyof T)[]): Partial<T> {
+  for (const opt of Object.keys(props) as Array<keyof T>) {
+    if (props[opt] === undefined || !validProps.includes(opt)) {
       delete props[opt]
     }
   }
