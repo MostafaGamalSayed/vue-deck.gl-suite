@@ -1,11 +1,11 @@
-import type { Deck, Layer } from '@deck.gl/core'
+import type { Layer } from '@deck.gl/core'
 import { inject, onUnmounted } from 'vue'
-import { addLayerSymbol, removeLayerSymbol } from '@/shared/constants.ts'
+// import { addLayerSymbol, removeLayerSymbol } from '@/shared/constants.ts'
 
 export const useLayer = (layerFactory: () => Layer) => {
   // Inject Deck.gl layer management functions
-  const addLayer = inject(addLayerSymbol) as (layer: Layer) => void
-  const removeLayer = inject(removeLayerSymbol) as (layer: Layer) => void
+  const addLayer = inject('addLayer') as (layer: Layer) => void
+  const removeLayer = inject('removeLayer') as (layer: Layer) => void
 
   // Create and register the new layer
   const layer = layerFactory()
