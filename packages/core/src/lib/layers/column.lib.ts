@@ -238,5 +238,5 @@ export const columnPropsKeys: (keyof ColumnLayerProps)[] = [
   'getFillColor',
   'getLineColor',
   'getElevation',
-  'getLineWidth'
+  'getLineWidth',
 ]

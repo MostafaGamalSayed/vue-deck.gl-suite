@@ -1,5 +1,5 @@
 <script setup>
-import { DeckGL, ColumnLayer } from "@vue-deckgl-suite/core"
+import { DeckGL, ColumnLayer } from '@vue-deckgl-suite/core'
 
 const initialViewState = {
   longitude: -122.4,
@@ -7,7 +7,7 @@ const initialViewState = {
   zoom: 11,
   maxZoom: 20,
   pitch: 30,
-  bearing: 0
+  bearing: 0,
 }
 </script>
 
@@ -15,7 +15,7 @@ const initialViewState = {
   <DeckGL
     :initial-view-state="initialViewState"
     :controller="true"
-    :getTooltip="({object}) => object && `height: ${object.value * 5000}m`"
+    :getTooltip="({ object }) => object && `height: ${object.value * 5000}m`"
   >
     <ColumnLayer
       id="ColumnLayer"
@@ -24,9 +24,9 @@ const initialViewState = {
       :extruded="true"
       :radius="250"
       :elevationScale="5000"
-      :getElevation="d => d.value"
-      :getFillColor="d => [48, 128, d.value * 255, 255]"
-      :getPosition="d => d.centroid"
+      :getElevation="(d) => d.value"
+      :getFillColor="(d) => [48, 128, d.value * 255, 255]"
+      :getPosition="(d) => d.centroid"
       :pickable="true"
     />
   </DeckGL>
