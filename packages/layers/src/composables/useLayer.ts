@@ -9,11 +9,13 @@ export const useLayer = (layerFactory: () => Layer) => {
 
   // Create and register the new layer
   const layer = layerFactory()
+  console.log(layer)
   if (!addLayer || !removeLayer) {
     throw new Error(
       'DeckGL context is missing. Ensure you are using this within a DeckGL parent component.',
     )
   }
+
   addLayer(layer)
 
   // Cleanup when the component is destroyed

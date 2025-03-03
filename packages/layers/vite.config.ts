@@ -29,9 +29,9 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       // Simplified library global name
-      name: 'VueDeckGLSuiteCore',
+      name: 'VueDeckGLSuiteLayers',
       // Dynamically include format in the file name
-      fileName: (format) => `vue-deckgl-suite-core.${format}.js`,
+      fileName: (format) => `vue-deckgl-suite-layers.${format}.js`,
     },
     rollupOptions: {
       external: [
@@ -44,7 +44,8 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           '@deck.gl/core': 'deck',
-          '@deck.gl/layers': 'deck.layers'
+          '@deck.gl/layers': 'deck.layers',
+          '@deck.gl/geo-layers': 'deck.geo-layers',
         },
       },
     }

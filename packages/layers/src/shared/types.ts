@@ -21,6 +21,7 @@ import {
   ScatterplotLayer,
   type ScatterplotLayerProps,
 } from '@deck.gl/layers'
+import type { Tile3DLayerProps } from '@deck.gl/geo-layers'
 
 export type DeckOptions = Omit<
   DeckProps,
@@ -61,6 +62,7 @@ export type DeckLayerProps =
   | WithoutLayerEvents<PathLayerProps>
   | WithoutLayerEvents<IconLayerProps>
   | WithoutLayerEvents<PointCloudLayerProps>
+  | WithoutLayerEvents<Tile3DLayerProps>
 
 export type DeckLayer =
   | ArcLayer
