@@ -1,5 +1,5 @@
 <script setup>
-import { DeckGL, ColumnLayer } from '@vue-deckgl-suite/core'
+import { DeckGL, ColumnLayer } from '@vue-deckgl-suite/layers'
 
 const initialViewState = {
   longitude: -122.4,

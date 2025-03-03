@@ -1,5 +1,5 @@
 <script setup>
-import { DeckGL, ArcLayer } from '@vue-deckgl-suite/core'
+import { DeckGL, ArcLayer } from '@vue-deckgl-suite/layers'
 import { ColumnLayer } from '@deck.gl/layers'
 
 const layers = new ColumnLayer({
