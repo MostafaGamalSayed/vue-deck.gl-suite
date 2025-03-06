@@ -1,6 +1,6 @@
-import type { ComponentPropsOptions, PropType } from 'vue';
-import { baseLayerKeys, baseLayerProps } from '@/lib/layers/layer.lib.ts';
-import type { PathLayerProps } from '@deck.gl/layers';
+import type { ComponentPropsOptions, PropType } from 'vue'
+import { baseLayerKeys, baseLayerProps } from '@/lib/layers/layer.lib.ts'
+import type { PathLayerProps } from '@deck.gl/layers'
 
 export const pathLayerProps: ComponentPropsOptions = {
   ...baseLayerProps,
@@ -52,7 +52,7 @@ export const pathLayerProps: ComponentPropsOptions = {
     type: [Function, Number] as PropType<PathLayerProps['getWidth']>,
     default: 1,
   },
-};
+}
 
 export const pathPropsKeys: (keyof PathLayerProps)[] = [
   ...baseLayerKeys,
@@ -68,4 +68,4 @@ export const pathPropsKeys: (keyof PathLayerProps)[] = [
   'getPath',
   'getColor',
   'getWidth',
-];
+]
