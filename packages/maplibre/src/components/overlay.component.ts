@@ -1,6 +1,5 @@
 import {
   defineComponent,
-  h,
   markRaw,
   onBeforeUnmount,
   onMounted,
@@ -44,10 +43,9 @@ export default defineComponent({
     // Provide Deck instance and helper methods to descendants
     provide(overlayInstanceSymbol, overlayInstance) // Share deck instance with child components
     provide('addLayer', (layer: Layer) => {
-      console.log('adding layer...', layer)
       // Function to add layers dynamically
-      if (layer) layers.value?.push(layer)
-      console.log('layers state after adding', layers.value)
+      layers.value?.push(layer)
+
     })
     provide('removeLayer', (layer: Layer) => {
       // Function to remove layers dynamically
@@ -67,12 +65,11 @@ export default defineComponent({
       () => layers.value,
       (newLayers) => {
         if (overlayInstance.value) {
-          console.log('updating overlay instance...', layers.value, newLayers)
           overlayInstance.value.setProps({ layers: newLayers })
-          console.log('overlay instance after updated', overlayInstance.value)
         }
-      },
+      }
     )
+
 
     // Initializes the Deck.gl instance and configures its options
     function initialize() {
@@ -81,8 +78,6 @@ export default defineComponent({
         overlayPropsKeys,
       ) // Normalize props into Deck.gl options
       delete opts['layers'] // Handle `layers` separately
-      console.log('initializing overlayInstance (layers should be empty)...', layers.value)
-      console.log('opts of overlayInstance (shouldn\'t have layers prop)...', opts)
 
       overlayInstance.value = markRaw(
         new MapboxOverlay({
@@ -106,7 +101,6 @@ export default defineComponent({
       )
 
       isInitialized.value = true // Mark initialization as complete
-      console.log('overlay is initialized (layers should be empty if layers not provided to the overlayInstance)', layers.value)
       layers.value = Array.isArray(props.layers) ? props.layers : [] // Set initial layers from props
     }
 
