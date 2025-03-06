@@ -10,7 +10,11 @@ export default defineComponent({
   emits: ['hover', 'click', 'drag', 'dragStart', 'dragEnd', 'dataLoad', 'error'],
   setup(props, { emit }) {
     function initialize() {
-      const opts: Partial<GeoJsonLayerProps> = genDeckLayerOpts(({ ...props } as GeoJsonLayerProps), geoJsonPropsKeys, emit)
+      const opts: Partial<GeoJsonLayerProps> = genDeckLayerOpts(
+        { ...props } as GeoJsonLayerProps,
+        geoJsonPropsKeys,
+        emit,
+      )
 
       useLayer(() => new GeoJsonLayer(opts))
     }

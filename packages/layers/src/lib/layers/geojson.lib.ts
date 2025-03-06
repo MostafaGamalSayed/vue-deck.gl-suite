@@ -6,7 +6,7 @@ export const geoJsonLayerProps: ComponentPropsOptions = {
   ...baseLayerProps,
   pointType: {
     type: String as PropType<GeoJsonLayerProps['pointType']>,
-    default: 'circle'
+    default: 'circle',
   },
   filled: {
     type: Boolean as PropType<GeoJsonLayerProps['filled']>,
