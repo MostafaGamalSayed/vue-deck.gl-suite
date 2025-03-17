@@ -84,6 +84,9 @@ export const baseLayerProps: ComponentPropsOptions = {
   updateTriggers: {
     type: Object as PropType<LayerProps['updateTriggers']>,
   },
+  transitions: {
+    type: Object as PropType<LayerProps['transitions']>,
+  }
 }
 export const baseLayerKeys: (keyof LayerProps)[] = [
   'id',
@@ -105,4 +108,5 @@ export const baseLayerKeys: (keyof LayerProps)[] = [
   'positionFormat',
   'colorFormat',
   'numInstances',
+  'transitions'
 ]
