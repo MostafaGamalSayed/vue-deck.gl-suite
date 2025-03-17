@@ -87,6 +87,14 @@ export const hexagonLayerProps: ComponentPropsOptions = {
     type: [Object, Boolean] as PropType<HexagonLayerProps['material']>,
     default: true
   },
+  extruded: {
+    type: Boolean as PropType<HexagonLayerProps['extruded']>,
+    default: false
+  },
+  getElevationWeight: {
+    type: [Function, Number] as PropType<HexagonLayerProps['getElevationWeight']>,
+    default: 1,
+  }
 
 }
 
@@ -113,4 +121,6 @@ export const hexagonPropsKeys: (keyof HexagonLayerProps)[] = [
   'elevationUpperPercentile',
   'elevationLowerPercentile',
   'material',
+  'getElevationWeight',
+  'extruded'
 ]
