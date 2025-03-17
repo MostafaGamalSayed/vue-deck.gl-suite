@@ -1,10 +1,10 @@
-import type { ComponentPropsOptions, PropType } from 'vue';
-import type { TripsLayerProps } from '@deck.gl/geo-layers';
+import type { ComponentPropsOptions, PropType } from 'vue'
+import type { TripsLayerProps } from '@deck.gl/geo-layers'
 import { pathLayerProps, pathPropsKeys } from '@/lib/layers/path.lib.ts'
 
 // Define Vue-style props for TripsLayer
 export const tripsLayerProps: ComponentPropsOptions = {
-  ...pathLayerProps ,
+  ...pathLayerProps,
   fadeTrail: {
     type: Boolean as PropType<TripsLayerProps['fadeTrail']>,
     default: true,
@@ -21,7 +21,7 @@ export const tripsLayerProps: ComponentPropsOptions = {
     type: Function as PropType<TripsLayerProps['getTimestamps']>,
     default: (d: any) => d.timestamps,
   },
-};
+}
 
 // Define the keys for TripsLayer props to simplify further use
 export const tripsPropsKeys: (keyof TripsLayerProps)[] = [
