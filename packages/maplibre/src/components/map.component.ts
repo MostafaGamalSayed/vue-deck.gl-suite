@@ -273,6 +273,12 @@ export default defineComponent({
       boundMapEvents.set('__rotateend', () => ctx.emit('update:bearing', map.value!.getBearing()))
       map.value.on('rotateend', boundMapEvents.get('__rotateend')!)
 
+      map.value.on('load', () => {
+        if (overlayInstance) {
+          map.value?.addControl(overlayInstance.value as unknown as IControl)
+        }
+      })
+
       // bind events
       if (component.vnode.props) {
         for (const event of MAP_EVENT_TYPES) {
@@ -292,10 +298,6 @@ export default defineComponent({
 
       // automatic re-initialization of map on CONTEXT_LOST_WEBGL
       map.value.getCanvas().addEventListener('webglcontextlost', restart)
-
-      if (overlayInstance) {
-        map.value.addControl(overlayInstance.value as unknown as IControl)
-      }
     }
 
     async function dispose() {
