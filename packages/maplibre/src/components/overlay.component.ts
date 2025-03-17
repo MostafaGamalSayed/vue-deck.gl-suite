@@ -7,12 +7,12 @@ import {
   type Ref,
   ref,
   type SlotsType,
-  watch,
+  watch
 } from 'vue'
 import { overlayProps, overlayPropsKeys } from '../lib/overlay.lib.ts'
 import { MapboxOverlay, type MapboxOverlayProps } from '@deck.gl/mapbox'
 import { overlayInstanceSymbol } from '@/shared/constants.ts'
-import type { Layer } from '@deck.gl/core'
+import { type Layer } from '@deck.gl/core'
 import { genDeckOpts } from '@/utils/genDeckOpts.ts'
 
 export default defineComponent({
@@ -45,39 +45,21 @@ export default defineComponent({
     provide('addLayer', (layer: Layer) => {
       // Function to add layers dynamically
       layers.value?.push(layer)
-
     })
+
     provide('removeLayer', (layer: Layer) => {
       // Function to remove layers dynamically
       layers.value = layers.value?.filter((item) => item !== layer)
     })
 
-    // Reactively updates `layers` state when the `layers` prop changes
-    watch(
-      () => props.layers,
-      (newLayers) => {
-        layers.value?.push(newLayers)
-      },
-    )
 
-    // Syncs changes in `layers` to the Deck.gl instance
-    watch(
-      () => layers.value,
-      (newLayers) => {
-        if (overlayInstance.value) {
-          overlayInstance.value.setProps({ layers: newLayers })
-        }
-      }
-    )
-
-
-    // Initializes the Deck.gl instance and configures its options
     function initialize() {
       const opts: Partial<MapboxOverlayProps> = genDeckOpts<MapboxOverlayProps>(
         { ...props },
         overlayPropsKeys,
       ) // Normalize props into Deck.gl options
-      delete opts['layers'] // Handle `layers` separately
+
+      layers.value = Array.isArray(props.layers) ? props.layers : [] // Set initial layers from props
 
       overlayInstance.value = markRaw(
         new MapboxOverlay({
@@ -101,7 +83,6 @@ export default defineComponent({
       )
 
       isInitialized.value = true // Mark initialization as complete
-      layers.value = Array.isArray(props.layers) ? props.layers : [] // Set initial layers from props
     }
 
     // Initialize MapboxOverlay instance
@@ -117,7 +98,7 @@ export default defineComponent({
 
     // Expose Deck instance for external access (e.g., parent components)
     ctx.expose({
-      overlayInstance,
+      mapboxOverlay: overlayInstance,
     })
 
     // Render function: Renders the canvas and optional slot content
