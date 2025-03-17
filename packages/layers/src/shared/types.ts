@@ -1,56 +1,60 @@
-import type { DeckProps, LayerProps } from '@deck.gl/core'
 import {
-  ArcLayer,
   type ArcLayerProps,
-  BitmapLayer,
   type BitmapLayerProps,
-  ColumnLayer,
   type ColumnLayerProps,
-  GeoJsonLayer,
   type GeoJsonLayerProps,
-  IconLayer,
   type IconLayerProps,
-  LineLayer,
   type LineLayerProps,
-  PathLayer,
   type PathLayerProps,
-  type PointCloudLayer,
   type PointCloudLayerProps,
-  PolygonLayer,
   type PolygonLayerProps,
-  ScatterplotLayer,
   type ScatterplotLayerProps,
 } from '@deck.gl/layers'
-import type { Tile3DLayerProps } from '@deck.gl/geo-layers'
+import type { Tile3DLayerProps, WMSLayerProps } from '@deck.gl/geo-layers'
+import type {
+  GridLayerProps,
+  HeatmapLayerProps,
+  HexagonLayerProps
+} from '@deck.gl/aggregation-layers'
 
-export type DeckOptions = Omit<
-  DeckProps,
-  | 'onLoad'
-  | 'onDrag'
-  | 'onDragStart'
-  | 'onDragEnd'
-  | 'onClick'
-  | 'onHover'
-  | 'onDeviceInitialized'
-  | 'onBeforeRender'
-  | 'onAfterRender'
-  | 'onInteractionStateChange'
-  | 'onViewStateChange'
-  | 'onError'
-  | 'onResize'
-  | '_onMetrics'
->
-
-export type LayerOptions = Omit<
-  LayerProps,
-  'onHover' | 'onClick' | 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDataLoad' | 'onError'
->
-
+/**
+ * Represents a utility type that excludes specific layer-related event properties from the given type `T`.
+ *
+ * The excluded event properties are 'onHover', 'onClick', 'onDrag', 'onDragStart',
+ * 'onDragEnd', 'onDataLoad', and 'onError'.
+ *
+ * This is useful for creating a type that inherits from `T` but does not include these specific events.
+ *
+ * @template T The base type from which the properties will be omitted.
+ */
 export type WithoutLayerEvents<T> = Omit<
   T,
   'onHover' | 'onClick' | 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDataLoad' | 'onError'
 >
 
+/**
+ * Represents the properties for various Deck.gl layer types without layer event properties.
+ *
+ * DeckLayerProps combines the settings for multiple types of layers, excluding the layer-specific events.
+ * This allows for standardized handling of properties across different types of layers.
+ *
+ * The supported layer types include:
+ * - ArcLayer
+ * - GeoJsonLayer
+ * - BitmapLayer
+ * - ColumnLayer
+ * - LineLayer
+ * - PolygonLayer
+ * - ScatterplotLayer
+ * - PathLayer
+ * - IconLayer
+ * - PointCloudLayer
+ * - Tile3DLayer
+ * - WMSLayer
+ * - HexagonLayer
+ * - GridLayer
+ * Each type is represented as a union, enabling flexibility to select properties specific to individual layer types.
+ */
 export type DeckLayerProps =
   | WithoutLayerEvents<ArcLayerProps>
   | WithoutLayerEvents<GeoJsonLayerProps>
@@ -63,15 +67,7 @@ export type DeckLayerProps =
   | WithoutLayerEvents<IconLayerProps>
   | WithoutLayerEvents<PointCloudLayerProps>
   | WithoutLayerEvents<Tile3DLayerProps>
-
-export type DeckLayer =
-  | ArcLayer
-  | GeoJsonLayer
-  | BitmapLayer
-  | ColumnLayer
-  | LineLayer
-  | PolygonLayer
-  | ScatterplotLayer
-  | PathLayer
-  | IconLayer
-  | PointCloudLayer
+  | WithoutLayerEvents<WMSLayerProps>
+  | WithoutLayerEvents<HeatmapLayerProps>
+  | WithoutLayerEvents<HexagonLayerProps>
+  | WithoutLayerEvents<GridLayerProps>
