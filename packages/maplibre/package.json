@@ -1,15 +1,14 @@
 {
-  "name": "@vue-deckgl-suite/core",
-  "version": "1.0.0",
+  "name": "@vue-deckgl-suite/maplibre",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/vue-deckgl-suite-core.umd.js",
-  "module": "dist/vue-deckgl-suite-core.es.js",
+  "main": "dist/vue-deckgl-suite-maplibre.umd.js",
+  "module": "dist/vue-deckgl-suite-maplibre.es.js",
   "types": "dist/main.d.ts",
   "web-types": "dist/web-types.json",
   "files": [
-    "dist/**/*",
-    "src/**/*"
+    "dist/**/*"
   ],
   "scripts": {
     "dev": "vite",
@@ -22,7 +21,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.13.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.3.0",
@@ -34,22 +33,20 @@
     "prettier": "^3.4.2",
     "typescript": "~5.7.3",
     "vite": "^6.0.11",
-    "vite-plugin-vue-devtools": "^7.7.0",
-    "vue": "^3.5.13",
-    "@deck.gl/core": "^9.1.1",
-    "@deck.gl/layers": "^9.1.1",
-    "@deck.gl/geo-layers": "^9.1.1",
-    "@deck.gl/aggregation-layers": "^9.1.1",
+    "vite-plugin-vue-devtools": "^7.7.1",
     "vue-tsc": "^2.2.0",
+    "vue": "^3.5.13",
+    "maplibre-gl": "^5.1.0",
+    "@deck.gl/core": "^9.1.3",
+    "@deck.gl/mapbox": "^9.1.3",
     "vite-plugin-dts": "^4.5.0",
     "vue-docgen-web-types": "^0.1.8"
 
   },
   "peerDependencies": {
-    "@deck.gl/core": "^9.1.1",
-    "@deck.gl/layers": "^9.1.1",
-    "@deck.gl/geo-layers": "^9.1.1",
-    "@deck.gl/aggregation-layers": "^9.1.1",
-    "vue": "^3.5.13"
+    "@deck.gl/core": "^9.1.3",
+    "@deck.gl/mapbox": "^9.1.3",
+    "vue": "^3.5.13",
+    "maplibre-gl": "^5.1.0"
   }
 }
