@@ -25,30 +25,24 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: false,
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
-      // Simplified library global name
-      name: 'VueDeckGLSuiteLayers',
-      // Dynamically include format in the file name
-      fileName: (format) => `vue-deckgl-suite-layers.${format}.js`,
+      name: 'VueDeckGLSuiteMapLibre',
+      fileName: (format) => `vue-deckgl-suite-maplibre.${format}.js`,
     },
     rollupOptions: {
       external: [
         'vue',
         '@deck.gl/core',
-        '@deck.gl/layers'
+        'maplibre-gl'
       ],
       output: {
-        exports: "named",
         globals: {
           vue: 'Vue',
-          '@deck.gl/core': 'deck',
-          '@deck.gl/layers': 'deck.layers',
-          '@deck.gl/geo-layers': 'deck.geo-layers',
-          '@deck.gl/aggregation-layers': 'deck.aggregation-layers',
-        },
-      },
+          "maplibre-gl": "maplibregl"
+        }
+      }
     }
   }
+
 })
