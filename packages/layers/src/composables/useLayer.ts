@@ -1,15 +1,22 @@
 import type { Layer } from '@deck.gl/core'
 import { inject, onUnmounted } from 'vue'
-// import { addLayerSymbol, removeLayerSymbol } from '@/shared/constants.ts'
 
+/**
+ * A composable function to manage the lifecycle of a Deck.gl layer. This function creates a new layer
+ * using a factory function, registers it with the Deck.gl context, and cleans up the layer
+ * resources when the component is destroyed.
+ *
+ * @param {function} layerFactory - A factory function that returns a new Deck.gl `Layer` instance.
+ * @throws {Error} Throws an error if the DeckGL context (`addLayer` or `removeLayer`) is not available.
+ */
 export const useLayer = (layerFactory: () => Layer) => {
   // Inject Deck.gl layer management functions
   const addLayer = inject('addLayer') as (layer: Layer) => void
   const removeLayer = inject('removeLayer') as (layer: Layer) => void
 
+
   // Create and register the new layer
   const layer = layerFactory()
-  console.log(layer)
   if (!addLayer || !removeLayer) {
     throw new Error(
       'DeckGL context is missing. Ensure you are using this within a DeckGL parent component.',
