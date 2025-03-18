@@ -1,7 +1,14 @@
 {
   "name": "@vue-deckgl-suite/maplibre",
-  "version": "0.0.0",
-  "private": true,
+  "description": "A Vue 3 package integrating Deck.gl with MapLibre for geospatial visualizations",
+  "version": "0.1.0-alpha.0",
+  "author": {
+    "name": "Mostafa Gamal",
+    "email": "mostafagamal99418@gmail.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "dist/vue-deckgl-suite-maplibre.umd.js",
   "module": "dist/vue-deckgl-suite-maplibre.es.js",
