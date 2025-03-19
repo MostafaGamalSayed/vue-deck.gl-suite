@@ -1,7 +1,6 @@
 <script setup>
 import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
 import { PathLayer } from '@vue-deckgl-suite/layers'
-import { TripsLayer } from '@vue-deckgl-suite/layers'
 
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 </script>
