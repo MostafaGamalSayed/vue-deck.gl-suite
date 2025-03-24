@@ -7,9 +7,7 @@ const style = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 
 <template>
   <DeckGL :get-tooltip="({ object }) => object && object.name">
-    <Map height="100vh" :style :center="[-122.4, 37.74]" :zoom="11">
-
-    </Map>
+    <Map height="100vh" :style :center="[-122.4, 37.74]" :zoom="11" />
     <GeoJsonLayer
       id="deck-gl-geojson"
       data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart.geo.json"
