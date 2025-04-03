@@ -1,6 +1,8 @@
-<a href="https://wakeb.tech" align="center">
-  <img src="./docs/public/wakeb-logo-light-mode.png" alt="Wakeb Logo" height="120">
-</a>
+<p align="center">
+    <a href="https://wakeb.tech/">
+      <img src="./docs/public/wakeb-logo-light-mode.png" alt="Wakeb Logo" height="120">
+    </a>
+</p>
 
 # @vue-deckgl-suite
 
