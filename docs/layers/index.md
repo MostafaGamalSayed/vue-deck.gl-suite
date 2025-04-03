@@ -30,7 +30,7 @@ In this example:
 - The declarative syntax improves readability and developer productivity when working within Vue applications.
 
 
-# Available Layers
+## Available Layers
 
 Here is a list of the layers available in `@vue-deckgl-suite/layers`. Each provides unique functionality for various geospatial visualization use cases.
 
@@ -38,10 +38,13 @@ Here is a list of the layers available in `@vue-deckgl-suite/layers`. Each provi
 - **[GeoJson Layer](/layers/geojson-layer/):** Visualizes GeoJSON data with full feature support.
 - **[Hexagon Layer](/layers/hexagon-layer/):** Aggregates scattered data points into hexagonal grids.
 - **[Grid Layer](/layers/grid-layer/):** Organizes and visualizes points within rectangular grids.
+- **[Column Layer](/layers/column-layer/):** Visualizes data as vertical cylinders, useful for 3D geospatial data
+  representation.
 - **[Path Layer](/layers/path-layer/):** Plots point-to-point paths or line segments on a map.
 - **[Trips Layer](/layers/trips-layer/):** Animates trips or movement data over time.
-- **[WMS Layer](/layers/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
 - **[Icon Layer](/layers/icon-layer/):** Renders icons or images at specific geospatial positions.
-
+- **[Point Cloud Layer](/layers/point-cloud-layer/):** Renders 3D point clouds, typically used for visualizing large
+  sets of points in space.
+- **[WMS Layer](/layers/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
 
 Learn more about each layer by visiting its dedicated page.
