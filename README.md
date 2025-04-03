@@ -153,11 +153,7 @@ We appreciate all contributors to this project and aim to create a flexible, com
 
 ## Documentation
 
-Be sure to check out our full documentation for examples, guides, and more details:
-
-- **Introduction**: [What is `@vue-deckgl-suite`?](./docs/introduction.md)
-- **Installation**: [Getting Started](./docs/installation.md)
-- **API Reference**: [Map and Layers API](./docs/index.md)
+Be sure to check out our full [documentation](./docs/introduction.md) for examples, guides, and more details
 
 ---
 
