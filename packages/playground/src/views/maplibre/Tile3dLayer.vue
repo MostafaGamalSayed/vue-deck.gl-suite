@@ -33,16 +33,16 @@ const layers = new Tile3DLayer({
 </script>
 
 <template>
-  <DeckGL :layers="[layers]">
+  <DeckGL>
     <Map height="100vh" :style :center="center" :zoom="15.5" :pitch="30">
-<!--      <Tile3dLayer-->
-<!--        id="tile-3d"-->
-<!--        data="https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/SanFrancisco_Bldgs/SceneServer/layers/0"-->
-<!--        :loader="I3SLoader"-->
-<!--        :loadOptions="{-->
-<!--            i3s: {useCompressedTextures: false}-->
-<!--          }"-->
-<!--      />-->
+      <Tile3dLayer
+        id="tile-3d"
+        data="https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/SanFrancisco_Bldgs/SceneServer/layers/0"
+        :loader="I3SLoader"
+        :loadOptions="{
+            i3s: {useCompressedTextures: false}
+          }"
+      />
     </Map>
   </DeckGL>
 </template>
