@@ -161,4 +161,4 @@ Be sure to check out our full documentation for examples, guides, and more detai
 
 ---
 
-Built with ❤️ by **Wakeb**.
+Built with ❤️ by [Mostafa Gamal](https://github.com/MostafaGamalSayed)@[**Wakeb**](https://wakeb.tech/).
