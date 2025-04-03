@@ -1,6 +1,6 @@
-<p align="center">
+<a href="https://wakeb.tech" align="center">
   <img src="./docs/public/wakeb-logo-light-mode.png" alt="Wakeb Logo" height="120">
-</p>
+</a>
 
 # @vue-deckgl-suite
 
@@ -153,7 +153,7 @@ We appreciate all contributors to this project and aim to create a flexible, com
 
 ## Documentation
 
-Be sure to check out our full [documentation](./docs/introduction.md) for examples, guides, and more details
+Be sure to check out our full [documentation](./docs/guide/introduction.md) for examples, guides, and more details
 
 ---
 
