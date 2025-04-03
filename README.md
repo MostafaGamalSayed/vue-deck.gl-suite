@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://wakeb.tech/">
+    <a href="https://wakeb.tech/" target="_blank">
       <img src="./docs/public/wakeb-logo-light-mode.png" alt="Wakeb Logo" height="120">
     </a>
 </p>
