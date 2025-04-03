@@ -1,13 +1,41 @@
+<script setup>
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
+import { ArcLayer } from '@vue-deckgl-suite/layers';
+import 'maplibre-gl/dist/maplibre-gl.css';
+</script>
+
+
 # Arc Layer
 
 The **Arc Layer** is a feature of `@vue-deckgl-suite/layers` that lets you draw arcs between two points on a map. It is useful for visualizing relationships, movements, or connections between two geospatial locations.
 
-## Features
-
-- Supports drawing arcs or great circles by specifying source and target positions.
-- Fully customizable in terms of color, width, and appearance.
-- Supports curved and straight lines between points, providing rich geospatial visualization capabilities.
-- Optimized for high-performance rendering with large datasets.
+<ClientOnly>
+    <DeckGL
+    :getTooltip="({ object }) => object && `${object.from.name} to ${object.to.name}`"
+  >
+    <Map
+      height="400px"
+      :style="`https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json`"
+      :center="[-122.4, 37.74]"
+      :zoom="11"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
+    >
+      <ArcLayer
+        id="arc-layer"
+        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json"
+        :getSourcePosition="(d) => d.from.coordinates"
+        :getTargetPosition="(d) => d.to.coordinates"
+        :getSourceColor="(d) => [Math.sqrt(d.inbound), 140, 0]"
+        :getTargetColor="(d) => [Math.sqrt(d.outbound), 140, 0]"
+        :getWidth="12"
+        :pickable="true"
+        @click="(info, event) => console.log(info, event)"
+      />
+    </Map>
+  </DeckGL>
+</ClientOnly>
 
 ## Usage
 
@@ -19,28 +47,42 @@ Here’s an example that demonstrates how to use the **Arc Layer** to render arc
 
 ```vue
 <script setup>
-import ArcLayer from '@vue-deckgl-suite/layers/arc.layer'
-
-const arcData = [
-  { sourcePosition: [-122.45, 37.78], targetPosition: [-77.03, 38.91], color: [255, 0, 0] },
-  { sourcePosition: [-77.03, 38.91], targetPosition: [-74.00, 40.71], color: [0, 0, 255] },
-]
+  import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
+  import { ArcLayer } from '@vue-deckgl-suite/layers'
 </script>
 
 <template>
-  <ArcLayer
-    :data="arcData"
-    :greatCircle="true"
-    :getSourcePosition="d => d.sourcePosition"
-    :getTargetPosition="d => d.targetPosition"
-    :getSourceColor="d => d.color"
-    :getWidth="2"
-    :numSegments="100"
-  />
+  <DeckGL
+    :getTooltip="({ object }) => object && `${object.from.name} to ${object.to.name}`"
+  >
+    <Map
+      height="500px"
+      :style="`https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json`"
+      :center="[-122.4, 37.74]"
+      :zoom="11"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
+    >
+      <ArcLayer
+        id="2"
+        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json"
+        :getSourcePosition="(d) => d.from.coordinates"
+        :getTargetPosition="(d) => d.to.coordinates"
+        :getSourceColor="(d) => [Math.sqrt(d.inbound), 140, 0]"
+        :getTargetColor="(d) => [Math.sqrt(d.outbound), 140, 0]"
+        :getWidth="12"
+        :pickable="true"
+        @click="(info, event) => console.log(info, event)"
+      />
+    </Map>
+  </DeckGL>
 </template>
-```
 
----
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
+```
 
 ## Props
 
@@ -62,7 +104,6 @@ Below are the props available for configuring the `ArcLayer`:
 | `getHeight`         | `Number`                | `1`                          | The arc's height factor (controls vertical "lift" effect).                                     |
 | `getTilt`           | `Number`                | `0`                          | Controls the tilt angle of the arc.                                                           |
 
----
 
 ## Events
 
@@ -78,18 +119,6 @@ The following events are emitted by the `ArcLayer` component and can be used to 
 | `dataLoad`    | Triggered when layer data is loaded.      |
 | `error`       | Triggered when there is an error loading the layer. |
 
----
-
-## Advanced Options
-
-The `ArcLayer` works seamlessly with other layers in `@vue-deckgl-suite`. You can combine it with other geospatial layers for advanced visualizations, such as heatmaps or data overlays.
-
-### Custom Styling
-
-Customize the look and feel of the arcs by passing custom functions to props like:
-
-- `getSourceColor` and `getTargetColor` for dynamic coloring.
-- `getWidth` to control the arc width based on data.
 
 ---
 
