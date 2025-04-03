@@ -1,5 +1,6 @@
-import type { Layer } from '@deck.gl/core'
-import { inject, onUnmounted } from 'vue'
+import type { Layer, LayerProps } from '@deck.gl/core'
+import { inject, markRaw, onUnmounted, type Ref, ref, watch } from 'vue'
+import type { DeckLayerProps } from '@/shared/types.ts'
 
 /**
  * A composable function to manage the lifecycle of a Deck.gl layer. This function creates a new layer
@@ -13,24 +14,28 @@ export const useLayer = (layerFactory: () => Layer) => {
   // Inject Deck.gl layer management functions
   const addLayer = inject('addLayer') as (layer: Layer) => void
   const removeLayer = inject('removeLayer') as (layer: Layer) => void
+  const layer: Ref<Layer| null> = ref(null)
 
 
   // Create and register the new layer
-  const layer = layerFactory()
+  layer.value = markRaw(layerFactory())
+
+  console.log(layer.value)
+
   if (!addLayer || !removeLayer) {
     throw new Error(
-      'DeckGL context is missing. Ensure you are using this within a DeckGL parent component.',
+      'DeckGL context is missing. Ensure you are uAsing this within a DeckGL parent component.',
     )
   }
 
-  addLayer(layer)
+  addLayer(layer.value)
 
   // Cleanup when the component is destroyed
   onUnmounted(() => {
-    if (layer) {
+    if (layer.value) {
       try {
-        removeLayer(layer) // Remove the layer from Deck.gl
-        layer.finalizeState(layer.context) // Finalize resources and release GPU memory
+        removeLayer(layer.value as Layer) // Remove the layer from Deck.gl
+        layer.value?.finalizeState(layer.value.context) // Finalize resources and release GPU memory
       } catch (error) {
         console.error('Error finalizing layer:', error)
       }
