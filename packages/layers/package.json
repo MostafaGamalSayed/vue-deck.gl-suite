@@ -6,6 +6,10 @@
     "name": "Mostafa Gamal",
     "email": "mostafagamal99418@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MostafaGamalSayed/vue-deck.gl-suite.git"
+  },
   "publishConfig": {
     "access": "public"
   },
