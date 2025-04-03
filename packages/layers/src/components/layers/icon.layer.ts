@@ -1,6 +1,6 @@
 import { iconLayerProps, iconPropsKeys } from '@/lib/layers/icon.lib.ts'
 import { IconLayer, type IconLayerProps } from '@deck.gl/layers'
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, markRaw, onMounted } from 'vue'
 import { genDeckLayerOpts } from '@/utils'
 import { useLayer } from '@/composables/useLayer.ts'
 

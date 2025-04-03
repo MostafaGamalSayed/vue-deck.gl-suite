@@ -9,6 +9,7 @@ const iconAtlas = new URL('icon-data/location-icon-atlas.png', import.meta.url).
 const iconMapping = new URL('icon-data/location-icon-mapping.json', import.meta.url).href
 
 
+
 // const layer = new IconLayer({
 //   id: 'icon',
 //   data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json',
@@ -33,20 +34,19 @@ const iconMapping = new URL('icon-data/location-icon-mapping.json', import.meta.
       :max-zoom="20"
       :pitch="0"
       :bearing="0"
-    >
-      <icon-layer
-        id="icon"
-        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json"
-        :pickable="true"
-        :get-position="d => d.coordinates"
-        :icon-atlas
-        :icon-mapping
-        :get-icon="d => 'marker'"
-        size-units="meters"
-        :size-scale="2000"
-        :size-min-pixels="6"
-      />
-    </Map>
+    />
+    <icon-layer
+      id="icon"
+      data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json"
+      :pickable="true"
+      :get-position="d => d.coordinates"
+      :icon-atlas
+      :icon-mapping
+      :get-icon="d => 'marker'"
+      size-units="meters"
+      :size-scale="2000"
+      :size-min-pixels="6"
+    />
   </DeckGL>
 </template>
 
