@@ -49,6 +49,11 @@ const router = createRouter({
       component: () => import('../views/maplibre/HeatmapLayer.vue'),
     },
     {
+      path: '/maplibre/beta-heatmap-layer',
+      name: 'maplibre-beta-heatmap-layer',
+      component: () => import('../views/maplibre/BetaHeatmapLayer.vue'),
+    },
+    {
       path: '/maplibre/geojson-layer',
       name: 'maplibre-geojson-layer',
       component: () => import('../views/maplibre/GeojsonLayer.vue'),
