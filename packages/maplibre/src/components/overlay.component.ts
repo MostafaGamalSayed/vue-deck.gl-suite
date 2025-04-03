@@ -1,4 +1,5 @@
 import {
+  computed,
   defineComponent,
   markRaw,
   onBeforeUnmount,
@@ -6,8 +7,7 @@ import {
   provide,
   type Ref,
   ref,
-  type SlotsType,
-  watch
+  type SlotsType, watch
 } from 'vue'
 import { overlayProps, overlayPropsKeys } from '../lib/overlay.lib.ts'
 import { MapboxOverlay, type MapboxOverlayProps } from '@deck.gl/mapbox'
@@ -44,14 +44,22 @@ export default defineComponent({
     provide(overlayInstanceSymbol, overlayInstance) // Share deck instance with child components
     provide('addLayer', (layer: Layer) => {
       // Function to add layers dynamically
-      layers.value?.push(layer)
+      // @ts-ignore
+      layers.value = [...layers.value, layer]
+
     })
 
     provide('removeLayer', (layer: Layer) => {
       // Function to remove layers dynamically
-      layers.value = layers.value?.filter((item) => item !== layer)
+      layers.value = layers.value?.filter(existingLayer => existingLayer !== layer)
     })
 
+    const allLayers = computed(() => {
+      // @ts-ignore
+      return [...layers.value, ...props.layers]
+    })
+
+    watch(allLayers, initialize, { immediate: true })
 
     function initialize() {
       const opts: Partial<MapboxOverlayProps> = genDeckOpts<MapboxOverlayProps>(
@@ -59,11 +67,12 @@ export default defineComponent({
         overlayPropsKeys,
       ) // Normalize props into Deck.gl options
 
-      layers.value = Array.isArray(props.layers) ? props.layers : [] // Set initial layers from props
+      destroyOverlay()
 
       overlayInstance.value = markRaw(
         new MapboxOverlay({
           ...opts,
+          layers: allLayers.value,
           onLoad: () => ctx.emit('load'),
           onClick: (info, event) => ctx.emit('click', { info, event }),
           onHover: (info, event) => ctx.emit('hover', { info, event }),
@@ -81,20 +90,22 @@ export default defineComponent({
           _onMetrics: (metrics) => ctx.emit('metrics', metrics),
         }),
       )
-
-      isInitialized.value = true // Mark initialization as complete
     }
 
-    // Initialize MapboxOverlay instance
-    onMounted(initialize)
+    onMounted(() => {
+      isInitialized.value = true
+    })
 
-    // Cleans up the Deck instance on component unmount
-    onBeforeUnmount(() => {
+
+    function destroyOverlay() {
       if (overlayInstance.value) {
         overlayInstance.value.finalize()
         overlayInstance.value = null
       }
-    })
+    }
+
+    // Cleans up the Deck instance on component unmount
+    onBeforeUnmount(destroyOverlay)
 
     // Expose Deck instance for external access (e.g., parent components)
     ctx.expose({
