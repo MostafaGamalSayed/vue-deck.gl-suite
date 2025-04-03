@@ -1,39 +1,64 @@
-# maplibre
+# @vue-deckgl-suite/maplibre
 
-This template should help get you started developing with Vue 3 in Vite.
+The `@vue-deckgl-suite/maplibre` package provides powerful Vue components to integrate **MapLibre** maps with **Deck.gl** layers, enabling you to build high-performance interactive geospatial visualizations. These components simplify handling maps and MapboxOverlay for your applications, leveraging both **Deck.gl** and **MapLibre** capabilities.
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+This package includes two primary Vue components:
 
-## Type Support for `.vue` Imports in TS
+### 1. **Map**
+The `Map` component is a Vue wrapper for **MapLibre GL**, a powerful open-source mapping library for creating customizable basemaps. It supports interactive features like zooming, panning, and adding map layers.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 2. **DeckGL**
+The `DeckGL` component acts as an overlay to render **Deck.gl** visualization layers on top of the MapLibre map. You can seamlessly combine and render multiple Deck.gl layers on a basemap.
 
-## Customize configuration
+## Example Usage
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+The following example demonstrates using `@vue-deckgl-suite/maplibre` to render data using the `DeckGL` overlay and `Map` component. Deck.gl layers are defined as ES6 class instances passed into the `layers` prop of the `DeckGL` overlay.
 
-## Project Setup
+```vue
+<script setup>
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
+import { ScatterplotLayer } from '@deck.gl/layers';
 
-```sh
-npm install
+const scatterplotLayer = new ScatterplotLayer({
+  id: 'scatterplot-layer',
+  data: 'data-url.json',
+  getPosition: d => d.coordinates,
+  getRadius: d => 10,
+  getColor: d => [255, 0, 0],
+});
+</script>
+
+<template>
+  <DeckGL :layers="[scatterplotLayer]">
+    <Map
+      center="[-122.4, 37.74]"
+      :zoom="11"
+      style="width: 100%; height: 100%;"
+    />
+  </DeckGL>
+</template>
 ```
 
-### Compile and Hot-Reload for Development
+## Available Components
 
-```sh
-npm run dev
-```
+### Map
+Use the `Map` component to set up a MapLibre basemap.
 
-### Type-Check, Compile and Minify for Production
+- **Interactive Features**: Zoom, pan, and configure the map appearance.
+- **Customizable Center and Zoom**: Specify map center coordinates and zoom levels.
 
-```sh
-npm run build
-```
+**[Learn more about the Map component →](./maplibre-basemap/)**
 
-### Lint with [ESLint](https://eslint.org/)
+### DeckGL
+Use the `DeckGL` component as an overlay to integrate declarative or programmatic Deck.gl layers onto the map.
 
-```sh
-npm run lint
-```
+- **Layer Support**: Add scalable and high-performance Deck.gl layers.
+- **Custom Interaction**: Handle events like `onClick`, `onHover`, and more.
+
+**[Learn more about the DeckGL component →](./mapbox-overlay/)**
+
+---
+
+For more information, refer to the full documentation of the **`@vue-deckgl-suite/maplibre`** package.

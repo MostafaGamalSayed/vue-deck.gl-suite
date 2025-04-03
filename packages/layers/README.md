@@ -1,39 +1,60 @@
-# core
+# @vue-deckgl-suite/layers
 
-This template should help get you started developing with Vue 3 in Vite.
+The `@vue-deckgl-suite/layers` package builds upon the capabilities of the `@vue-deckgl-suite/maplibre` package by introducing **declarative Vue components** for defining and rendering **Deck.gl** layers. This approach simplifies the process of adding complex geospatial visualizations to your Vue applications, aligning closely with Vue's component-based architecture.
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+This package allows developers to define Deck.gl layers as Vue child components inside the `DeckGL` overlay. Each layer is treated as a standalone Vue component with props that map directly to the corresponding Deck.gl layer attributes.
 
-## Type Support for `.vue` Imports in TS
+## Example Usage
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+The following example demonstrates how to declare and configure a layer using **`@vue-deckgl-suite/layers`**. This approach uses Vue's declarative syntax, making it easier to manage complex layer configurations.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```vue
+<template>
+  <DeckGL>
+    <Map
+      center="[-122.4, 37.74]"
+      :zoom="11"
+      style="width: 100%; height: 100%;"
+    />
+    <ScatterplotLayer
+      id="scatterplot-layer"
+      :data="'data-url.json'"
+      :getPosition="(d) => d.coordinates"
+      :getRadius="10"
+      :getColor="[255, 0, 0]"
+    />
+  </DeckGL>
+</template>
 ```
 
-### Compile and Hot-Reload for Development
+## Key Features
 
-```sh
-npm run dev
-```
+- **Declarative Syntax**: Define Deck.gl layers directly as Vue components.
+- **Streamlined Configuration**: Simplified props for easy layer customization.
+- **Vue Integration**: Fully supports Vue's reactivity and lifecycle hooks.
 
-### Type-Check, Compile and Minify for Production
+### Supported Layers
 
-```sh
-npm run build
-```
+The `@vue-deckgl-suite/layers` package provides Vue components for the following Deck.gl layers:
 
-### Lint with [ESLint](https://eslint.org/)
+- `ScatterplotLayer`
+- `ArcLayer`
+- `ColumnLayer`
+- `PointCloudLayer`
+- And more...
 
-```sh
-npm run lint
-```
+Each of these components is designed to be a one-to-one mapping with its corresponding Deck.gl layer class.
+
+## When to Use
+
+### 1. With `@vue-deckgl-suite/maplibre`
+Combine both packages to create geospatial visualizations using Vue's declarative syntax. Layers can be nested as child components of `DeckGL`.
+
+### 2. Without `@vue-deckgl-suite/maplibre`
+The package can also be used independently with other basemaps or frameworks, as long as Deck.gl is integrated into your project.
+
+---
+
+For more information about available layers, supported basemaps, and future integrations, refer to the full documentation of the **`@vue-deckgl-suite/layers`** package.
