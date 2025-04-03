@@ -38,6 +38,10 @@
     padding: 18px;
 }
 
+.content-container {
+    max-width: 750px !important;
+}
+
 /* used in reference/default-theme-search */
 img[src='/search.png'] {
     width: 100%;
