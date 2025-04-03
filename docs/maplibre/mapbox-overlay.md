@@ -1,17 +1,25 @@
-# DeckGL (Mapbox Overlay)
+<script setup>
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
+import { HeatmapLayer } from '@deck.gl/aggregation-layers';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+
+const layer = new HeatmapLayer({
+  id: 'HeatmapLayer',
+  data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
+
+  aggregation: 'SUM',
+  getPosition: d => d.COORDINATES,
+  getWeight: d => d.SPACES,
+  radiusPixels: 25
+});
+</script>
+
+# DeckGL Component (Mapbox Overlay)
 
 The `DeckGL` component allows you to integrate **Deck.gl** layers as overlays within a **MapLibre** map. It enables seamless synchronization between Deck.gl features and the MapLibre map, offering a powerful way to create high-performance geospatial visualizations with interactive layers.
 
----
-
-## Features
-
-- Supports adding and managing multiple **Deck.gl** layers dynamically.
-- Handles synchronization of the map view state with Deck.gl overlays.
-- Emits various events to handle user interactions, such as clicks, hovers, drags, and more.
-- Provides extensive customization options for rendering properties such as layers, effects, and tooltips.
-
----
 
 ## Usage
 
@@ -19,38 +27,54 @@ Here’s a basic example demonstrating how to use the `DeckGL` component:
 
 ```vue
 <script setup>
-import DeckGL from '@vue-deckgl-suite/maplibre'
+  import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
+  import { HeatmapLayer } from '@deck.gl/aggregation-layers'
 
-const layers = [
-  new ScatterplotLayer({
-    id: 'scatterplot-layer',
-    data: [
-      { position: [-74.5, 40], color: [255, 0, 0], radius: 100 },
-      { position: [-75, 41], color: [0, 0, 255], radius: 150 },
-    ],
-    getPosition: (d) => d.position,
-    getFillColor: (d) => d.color,
-    getRadius: (d) => d.radius,
-  }),
-]
+  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+
+  const layer = new HeatmapLayer({
+    id: 'HeatmapLayer',
+    data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
+
+    aggregation: 'SUM',
+    getPosition: d => d.COORDINATES,
+    getWeight: d => d.SPACES,
+    radiusPixels: 25
+  });
 </script>
 
 <template>
-  <DeckGL
-    :layers="layers"
-    :getTooltip="(info) => info.object && `Radius: ${info.object.radius}`"
-    :useDevicePixels="true"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-  />
+  <DeckGL :layers="[layer]">
+    <Map
+      height="100vh"
+      :style
+      :center="[-122.4, 37.74]"
+      :zoom="11"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
+    />
+  </DeckGL>
 </template>
+
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
+
 ```
-
-In the example above:
-- A `ScatterplotLayer` is set up and passed into the `layers` prop of the `DeckGL` component.
-- Custom tooltips are enabled via the `getTooltip` prop.
-- The `DeckGL` component dynamically handles rendering within the MapLibre map.
-
----
+<ClientOnly>
+  <DeckGL :layers="[layer]" :get-tooltip="({ object }) => object && object.name">
+    <Map
+      height="400px"
+      :style
+      :center="[-122.4, 37.74]"
+      :zoom="11"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
+    />
+  </DeckGL>
+</ClientOnly>
 
 ## Props
 
@@ -74,7 +98,6 @@ The `DeckGL` component accepts the following props to customize its behavior:
 | `getTooltip`         | `Function`                 | `undefined`              | A callback to render a tooltip based on a hovered object.                                        |
 | `debug`              | `Boolean`                  | `false`                  | Enables debug mode for WebGL rendering.                                                         |
 
----
 
 ## Events
 
@@ -99,29 +122,4 @@ The `DeckGL` component emits the following events, allowing you to handle user i
 
 ---
 
-## Advanced Options
-
-The `DeckGL` component can be extended or customized depending on your application needs:
-
-### Adding Layers Dynamically
-
-Use the `layers` prop to add, update, or remove Deck.gl layers dynamically. For example:
-
-```vue
-<DeckGL :layers="[...existingLayers, new ScatterplotLayer({...})]" />
-```
-
-### Tooltips and Cursor
-
-Customize tooltips with the `getTooltip` prop or define custom mouse cursors using the `getCursor` prop.
-
-```vue
-<DeckGL
-  :getTooltip="(info) => info.object && `Clicked at ${info.object.position}`"
-  :getCursor="() => 'pointer'"
-/>
-```
-
----
-
-For further details on Deck.gl layers and their props, check the [Deck.gl documentation](https://deck.gl/docs/api-reference/layers).
+For further details on Deck.gl layers and their props, check the [Deck.gl documentation](https://deck.gl/docs/api-reference/mapbox/mapbox-overlay).

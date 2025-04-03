@@ -1,18 +1,23 @@
+<script setup>
+import { Map } from '@vue-deckgl-suite/maplibre';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+
+function handleMapLoad() {
+  console.log('Map Loaded')
+}
+</script>
+
 # Map Component
 
 The `Map` component provides a lightweight, Vue-compatible wrapper for **MapLibre GL** maps. It enables easy integration, event handling, and customization of MapLibre maps in Vue projects.
 
----
 
-## Features
+## Background and Inspiration
 
-- Provides a Vue-compatible interface for configuring **MapLibre GL** maps.
-- Supports a wide range of props for defining map behavior, style, and interaction.
-- Emits events for every major map interaction and lifecycle (e.g., `load`, `zoom`, `drag`, etc.).
-- Allows dynamic updates to map state properties like `center`, `zoom`, `bearing`, and `pitch`.
-- Enables extension with custom layers, popups, markers, and other overlays via slots.
+The source code for this component is inspired by and adapted from the [vue-maplibre-gl](https://github.com/indoorequal/vue-maplibre-gl) package. Specifically, the implementation references the [map.component.ts](https://github.com/indoorequal/vue-maplibre-gl/blob/master/lib/components/map.component.ts) file from the [vue-maplibre-gl](https://github.com/indoorequal/vue-maplibre-gl) repository. This starting point was chosen because `vue-maplibre-gl` already provides comprehensive support for handling all MapLibre properties and events. By building on that foundation, this component avoids "reinventing the wheel" and ensures developers have access to all the essential features and extensibility provided by **MapLibre GL**.
 
----
 
 ## Usage
 
@@ -20,11 +25,9 @@ Here’s an example of how to use the `Map` component:
 
 ```vue
 <script setup>
-import { ref } from 'vue'
-import Map from '@vue-deckgl-suite/maplibre'
+import { Map } from '@vue-deckgl-suite/maplibre'
 
-const mapCenter = ref([0, 0])
-const mapZoom = ref(3)
+const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
 function handleMapLoad() {
   console.log('Map Loaded')
@@ -33,9 +36,13 @@ function handleMapLoad() {
 
 <template>
   <Map
-    :center="mapCenter"
-    :zoom="mapZoom"
-    style="width: 100%; height: 500px;"
+    height="400px"
+    :style
+    :center="[-122.4, 37.74]"
+    :zoom="11"
+    :max-zoom="20"
+    :pitch="30"
+    :bearing="0"
     @map:load="handleMapLoad"
   >
     <template #default>
@@ -45,12 +52,23 @@ function handleMapLoad() {
 </template>
 ```
 
-In the example:
-- The map is centered on `[0, 0]` with an initial zoom level of `3`.
-- The `@map:load` event is used to trigger custom logic once the map has fully loaded.
-- A default slot is used for adding custom content (e.g., layers, popups, markers).
+<ClentOnly>
+    <Map
+        height="400px"
+        :style
+        :center="[-122.4, 37.74]"
+        :zoom="11"
+        :max-zoom="20"
+        :pitch="30"
+        :bearing="0"
+        @map:load="handleMapLoad"
+      >
+        <template #default>
+          <!-- Add layers, sources, markers, or popups here -->
+        </template>
+      </Map>
+</ClentOnly>
 
----
 
 ## Props
 
@@ -79,7 +97,6 @@ The `Map` component accepts numerous props that align with **MapLibre GL**'s opt
 
 These and other props make it easier to configure the map's settings based on project needs.
 
----
 
 ## Events
 
@@ -108,10 +125,6 @@ The `Map` component emits an extensive range of events, allowing you to handle u
 | `update:bearing`          | Emitted when the `bearing` (rotation) changes.                                              |
 | `update:pitch`            | Emitted when the `pitch` (tilt) property changes.                                            |
 
-For a complete list of events, refer to the [MapLibre GL Events Documentation](https://maplibre.org/maplibre-gl-js-docs/api/map/).
-
----
-
 ## Slots
 
 The `Map` component provides a `default` slot for adding custom content like layers, controls, popups, or markers. Example:
@@ -123,32 +136,3 @@ The `Map` component provides a `default` slot for adding custom content like lay
   </template>
 </Map>
 ```
-
----
-
-## Advanced Usage
-
-### Binding Props Dynamically
-
-Most map state properties like `zoom`, `center`, `bearing`, and `pitch` can be two-way bound using the `v-model` syntax:
-
-```vue
-<script setup>
-import { ref } from 'vue'
-
-const mapCenter = ref([40, -70])
-const mapZoom = ref(10)
-</script>
-
-<template>
-  <Map v-model:center="mapCenter" v-model:zoom="mapZoom" style="width: 100%; height: 400px;" />
-</template>
-```
-
-In this example:
-- Both the map's center and zoom values are dynamically updated as the user interacts with the map.
-- Changes to the `mapCenter` or `mapZoom` props programmatically update the map accordingly.
-
----
-
-For additional configuration options, refer to the [MapLibre GL JS API Reference](https://maplibre.org/).
