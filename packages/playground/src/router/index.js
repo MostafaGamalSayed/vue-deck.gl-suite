@@ -78,6 +78,16 @@ const router = createRouter({
       name: 'maplibre-grid-layer',
       component: () => import('../views/maplibre/GridLayer.vue'),
     },
+    {
+      path: '/maplibre/column-layer',
+      name: 'maplibre-column-layer',
+      component: () => import('../views/maplibre/ColumnLayer.vue'),
+    },
+    {
+      path: '/maplibre/point-cloud-layer',
+      name: 'maplibre-point-cloud-layer',
+      component: () => import('../views/maplibre/PointCloudLayer.vue'),
+    },
   ],
 })
 
