@@ -1,23 +1,23 @@
 <script setup>
-import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
-// import { HeatmapLayer } from '@deck.gl/aggregation-layers'
-import { HeatmapLayer } from '@vue-deckgl-suite/layers'
+import {  Map, DeckGL } from '@vue-deckgl-suite/maplibre'
+import { HeatmapLayer } from '@deck.gl/aggregation-layers'
+// import { HeatmapLayer } from '@vue-deckgl-suite/layers'
 
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
-// const layer = new HeatmapLayer({
-//   id: 'HeatmapLayer',
-//   data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
-//
-//   aggregation: 'SUM',
-//   getPosition: d => d.COORDINATES,
-//   getWeight: d => d.SPACES,
-//   radiusPixels: 25
-// });
+const layer = new HeatmapLayer({
+  id: 'HeatmapLayer',
+  data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
+
+  aggregation: 'SUM',
+  getPosition: d => d.COORDINATES,
+  getWeight: d => d.SPACES,
+  radiusPixels: 25
+});
 </script>
 
 <template>
-  <DeckGL :get-tooltip="({ object }) => object && object.name">
+  <DeckGL :layers="[layer]" :get-tooltip="({ object }) => object && object.name">
     <Map
       height="100vh"
       :style
@@ -26,17 +26,15 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
       :max-zoom="20"
       :pitch="30"
       :bearing="0"
-    >
-      <HeatmapLayer
-        id="HeatmapLayer"
-        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json"
-
-        aggregation="SUM"
-        :getPosition="d => d.COORDINATES"
-        :getWeight="d => d.SPACES"
-        :radiusPixels="25"
-      />
-    </Map>
+    />
+<!--    <HeatmapLayer-->
+<!--      id="HeatmapLayer"-->
+<!--      :data="'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json'"-->
+<!--      :aggregation="'SUM'"-->
+<!--      :getPosition="d => d.COORDINATES"-->
+<!--      :getWeight="d => d.SPACES"-->
+<!--      :radiusPixels="25"-->
+<!--    />-->
   </DeckGL>
 </template>
 
