@@ -20,7 +20,7 @@ const initialViewState = {
   >
     <PointCloudLayer
       id="PointCloudLayer"
-      data="https//raw.githubusercontent.com/visgl/deck.gl-data/master/website/pointcloud.json"
+      data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/pointcloud.json"
       :getColor="(d) => d.color"
       :getNormal="(d) => d.normal"
       :getPosition="(d) => d.position"
