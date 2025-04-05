@@ -1,5 +1,9 @@
+import { createRequire } from 'module'
 import { type DefaultTheme, defineConfig } from 'vitepress'
 
+// @ts-ignore
+const require = createRequire(import.meta.url)
+const pkg = require('../../package.json')
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,7 +21,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/examples' }
+      { text: 'Examples', link: '/examples' },
+      {
+        text: `v${pkg.version}`,
+        items: [
+          { text: 'Changelog', link: 'https://github.com/MostafaGamalSayed/vue-deck.gl-suite/releases/tag/v1.0.0-beta.0' },
+        ]
+      },
     ],
 
     sidebar: [
