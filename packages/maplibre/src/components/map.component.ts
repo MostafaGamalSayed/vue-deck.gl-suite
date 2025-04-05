@@ -15,10 +15,10 @@ import {
 } from 'vue'
 import {
   type IControl,
-  Map as MaplibreMap,
   type MapEventType,
   type StyleSpecification,
 } from 'maplibre-gl'
+import maplibre from 'maplibre-gl';
 import { isInitializedSymbol, isLoadedSymbol, mapSymbol } from '@/types'
 import {
   MAP_EVENT_TYPES,
@@ -30,6 +30,8 @@ import {
 } from '@/lib/map.lib'
 import { isLngLatEqual } from '@/utils/isLngLatEqual'
 import { overlayInstanceSymbol } from '@/shared/constants.ts'
+
+const { Map: MaplibreMap} = maplibre;
 
 /**
  * The map component
@@ -115,7 +117,7 @@ export default defineComponent({
   setup(props: MapProps, ctx) {
     const component = markRaw(getCurrentInstance()!),
       container = shallowRef<HTMLDivElement>(),
-      map = shallowRef<MaplibreMap>(),
+      map = shallowRef<maplibre.Map>(),
       isInitialized = ref(false),
       isLoaded = ref(false),
       boundMapEvents = new Map<
