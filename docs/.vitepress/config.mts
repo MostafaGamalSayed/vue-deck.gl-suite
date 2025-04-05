@@ -56,8 +56,8 @@ export default defineConfig({
 
 function sidebarMaplibre(): DefaultTheme.SidebarItem[] {
   return [
-    { text: 'Maplibre Basemap', link: '/maplibre/maplibre-basemap' },
-    { text: 'Mapbox Overlay', link: '/maplibre/mapbox-overlay' },
+    { text: 'Map', link: '/maplibre/maplibre-basemap' },
+    { text: 'DeckGL', link: '/maplibre/mapbox-overlay' },
   ]
 }
 
@@ -65,13 +65,13 @@ function sidebarLayers(): DefaultTheme.SidebarItem[] {
   return [
     { text: 'Arc Layer', link: '/layers/arc-layer' },
     { text: 'GeoJson Layer', link: '/layers/geojson-layer' },
-    { text: 'Hexagon Layer', link: '/layers/hexagon-layer/' },
-    { text: 'Grid Layer', link: '/layers/grid-layer/' },
-    { text: 'Column Layer', link: '/layers/column-layer/' },
-    { text: 'Path Layer', link: '/layers/path-layer/' },
-    { text: 'Trips Layer', link: '/layers/trips-layer/' },
-    { text: 'Icon Layer', link: '/layers/icon-layer/' },
-    { text: 'Point Cloud Layer', link: '/layers/point-cloud-layer/' },
-    { text: 'WMS Layer', link: '/layers/wms-layer/' },
+    { text: 'Hexagon Layer', link: '/layers/hexagon-layer' },
+    { text: 'Grid Layer', link: '/layers/grid-layer' },
+    { text: 'Column Layer', link: '/layers/column-layer' },
+    { text: 'Path Layer', link: '/layers/path-layer' },
+    { text: 'Trips Layer', link: '/layers/trips-layer' },
+    { text: 'Icon Layer', link: '/layers/icon-layer' },
+    { text: 'Point Cloud Layer', link: '/layers/point-cloud-layer' },
+    { text: 'WMS Layer', link: '/layers/wms-layer' },
   ]
 }
