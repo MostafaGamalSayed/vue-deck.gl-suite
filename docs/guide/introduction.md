@@ -6,7 +6,7 @@ The **`@vue-deckgl-suite`** monorepo is built to provide a seamless integration 
 
 ### `@vue-deckgl-suite/maplibre`
 This package provides two core components:
-1. **`Map`**: A Vue wrapper for **MapLibre GL**, a powerful and customizable open-source basemap provider.
+1. **`Map`**: A Map component for **MapLibre GL**, a powerful and customizable open-source basemap provider.
 2. **`DeckGL`**: An overlay component that facilitates rendering of **Deck.gl** visualization layers on top of the MapLibre map.
 
 Developers using only the **`@vue-deckgl-suite/maplibre`** package can define Deck.gl layers as **ES6 class instances** and pass them to the `layers` prop of the `DeckGL` component. This is the default behavior and requires familiarity with the Deck.gl API.

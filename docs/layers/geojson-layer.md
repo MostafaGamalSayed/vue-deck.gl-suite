@@ -91,6 +91,7 @@ const style = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 ```
 
 ## Props
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
 
 Below is a table of props you can use to configure the `GeoJsonLayer`:
 

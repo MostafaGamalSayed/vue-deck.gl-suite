@@ -86,6 +86,8 @@ Here’s an example that demonstrates how to use the **Arc Layer** to render arc
 
 ## Props
 
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
+
 Below are the props available for configuring the `ArcLayer`:
 
 | Prop                | Type                     | Default                      | Description                                                                                   |

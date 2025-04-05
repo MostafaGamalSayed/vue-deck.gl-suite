@@ -81,6 +81,8 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
 ## Props
 
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
+
 Below are the props available for configuring the `PointCloudLayer`:
 
 | Prop              | Type               | Default             | Description                                                                                   |

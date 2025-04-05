@@ -91,6 +91,8 @@ const iconMapping = new URL('icon-data/location-icon-mapping.json', import.meta.
 
 ## Props
 
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
+
 Below are the props available for configuring the `IconLayer`:
 
 | Prop                  | Type                  | Default                       | Description                                                                                                  |

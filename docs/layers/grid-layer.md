@@ -99,6 +99,7 @@ const colorRange = [
 ```
 
 ## Props
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
 
 Below is a list of props available for customizing the `GridLayer`:
 

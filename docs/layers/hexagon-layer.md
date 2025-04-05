@@ -4,7 +4,7 @@ import { HexagonLayer } from '@vue-deckgl-suite/layers';
 import 'maplibre-gl/dist/maplibre-gl.css';
 </script>
 
-# Hexagon Layer
+1   # Hexagon Layer
 
 The **Hexagon Layer** is a feature of `@vue-deckgl-suite/layers` that allows for rendering and aggregating geospatial data into hexagonal bins. This layer is particularly useful in scenarios where data density visualization is required, such as showing data distributions or patterns over a region.
 
@@ -99,6 +99,7 @@ const colorRange = [
 ```
 
 ## Props
+Inherits from all [Base Layer](https://deck.gl/docs/api-reference/core/layer#properties) properties.
 
 The `HexagonLayer` has a comprehensive set of props for customization. Below are the main props that can be configured to control the layer’s behavior and appearance:
 
