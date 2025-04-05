@@ -7,6 +7,7 @@ export default defineConfig({
   description: "A vue wrapper for Deck.gl.",
   cleanUrls: true,
   ignoreDeadLinks: true,
+  appearance: 'dark',
   themeConfig: {
     logo: {
       light: '/wakeb-logo-light-mode.png',
