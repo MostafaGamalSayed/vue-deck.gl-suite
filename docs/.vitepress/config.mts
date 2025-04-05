@@ -42,7 +42,9 @@ export default defineConfig({
         items: sidebarLayers()
       }
     ],
-
+    search: {
+      provider: 'local'
+    },
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright (c) 2025 Mostafa Gamal - Wakeb'
