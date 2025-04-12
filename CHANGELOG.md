@@ -1,4 +1,4 @@
-## [v1.0.0-beta.1] - 2025-12-04
+## [v1.0.0-beta.2] - 2025-12-04
 
 ### 🚀 Refactor: Enhanced Deck.gl Layer Management
 
@@ -9,7 +9,7 @@
 
 - **Major Improvements to `overlay.component.ts`:**
     - Improved `watch` logic for accurately updating and synchronizing layers across the Deck.gl context.
-    - Cleanly structured the initialization and destruction of the MapboxOverlay instance, ensuring stability and reusability.
+    - Cleanly structured the initialization and des`truction of the MapboxOverlay instance, ensuring stability and reusability.
 
 #### Advantages for Developers:
 - **Simplified Layer Updates:**  
