@@ -37,8 +37,11 @@ export const useLayer = <P extends DeckLayerProps>(
   const initializeLayer = () => {
     const opts: any = genDeckLayerOpts({ ...props }, validProps, emit)
 
-    // Finalize the previous layer if it exists
-    destroyLayer()
+    // Remove the previous layer if it exists from the registered layers of the overlay
+    if (layer.value) {
+      removeLayer(layer.value)
+      layer.value = null
+    }
 
     // Create a new layer and register it
     layer.value = markRaw(layerFactory(opts))
@@ -52,7 +55,10 @@ export const useLayer = <P extends DeckLayerProps>(
     if (layer.value) {
       try {
         removeLayer(layer.value) // Remove the layer from Deck.gl
-        layer.value.finalizeState(layer.value.context) // Release GPU memory
+        if (layer.value.context) {
+          layer.value.finalizeState(layer.value.context) // Release GPU memory
+        }
+        layer.value = null
       } catch (error) {
         console.error('Error finalizing layer:', error)
       }
