@@ -43,10 +43,10 @@ pnpm add @vue-deckgl-suite/layers @vue-deckgl-suite/maplibre
 The packages rely on peer dependencies. Install the following:
 ```bash
 # For @vue-deckgl-suite/layers
-npm install vue @deck.gl/core @deck.gl/layers @deck.gl/geo-layers @deck.gl/aggregation-layers
+npm install @deck.gl/core @deck.gl/layers @deck.gl/geo-layers @deck.gl/aggregation-layers
 
 # For @vue-deckgl-suite/maplibre
-npm install vue @deck.gl/core @deck.gl/mapbox maplibre-gl
+npm install @deck.gl/core @deck.gl/core @deck.gl/layers @deck.gl/geo-layers @deck.gl/aggregation-layers @deck.gl/mapbox maplibre-gl
 ```
 
 ### 3. Add Required CSS
