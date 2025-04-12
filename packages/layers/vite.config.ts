@@ -25,7 +25,6 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: false,
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       // Simplified library global name
@@ -37,10 +36,11 @@ export default defineConfig({
       external: [
         'vue',
         '@deck.gl/core',
-        '@deck.gl/layers'
+        '@deck.gl/layers',
+        '@deck.gl/geo-layers',
+        '@deck.gl/aggregation-layers'
       ],
       output: {
-        exports: "named",
         globals: {
           vue: 'Vue',
           '@deck.gl/core': 'deck',
