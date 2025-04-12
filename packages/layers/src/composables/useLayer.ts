@@ -35,8 +35,6 @@ export const useLayer = <P extends DeckLayerProps>(
    * Create or update the layer based on the current props
    */
   const initializeLayer = () => {
-    console.log('initializeLayer', props)
-
     const opts: any = genDeckLayerOpts({ ...props }, validProps, emit)
 
     // Finalize the previous layer if it exists
