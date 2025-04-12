@@ -42,16 +42,14 @@ export default defineComponent({
 
     // Provide Deck instance and helper methods to descendants
     provide(overlayInstanceSymbol, overlayInstance) // Share deck instance with child components
+    provide('removeLayer', (layer: Layer) => {
+      // Function to remove layers dynamically
+      layers.value = layers.value?.filter(existingLayer => existingLayer !== layer)
+    })
     provide('addLayer', (layer: Layer) => {
       // Function to add layers dynamically
       // @ts-ignore
       layers.value = [...layers.value, layer]
-
-    })
-
-    provide('removeLayer', (layer: Layer) => {
-      // Function to remove layers dynamically
-      layers.value = layers.value?.filter(existingLayer => existingLayer !== layer)
     })
 
     const allLayers = computed(() => {
@@ -59,7 +57,9 @@ export default defineComponent({
       return [...layers.value, ...props.layers]
     })
 
-    watch(allLayers, initialize, { immediate: true })
+    watch(allLayers, () => {
+      overlayInstance.value?.setProps({ layers: allLayers.value })
+    }, { deep: true })
 
     function initialize() {
       const opts: Partial<MapboxOverlayProps> = genDeckOpts<MapboxOverlayProps>(
@@ -67,12 +67,10 @@ export default defineComponent({
         overlayPropsKeys,
       ) // Normalize props into Deck.gl options
 
-      destroyOverlay()
-
       overlayInstance.value = markRaw(
         new MapboxOverlay({
           ...opts,
-          layers: allLayers.value,
+          layers: [...allLayers.value],
           onLoad: () => ctx.emit('load'),
           onClick: (info, event) => ctx.emit('click', { info, event }),
           onHover: (info, event) => ctx.emit('hover', { info, event }),
@@ -90,11 +88,11 @@ export default defineComponent({
           _onMetrics: (metrics) => ctx.emit('metrics', metrics),
         }),
       )
+
+      isInitialized.value = true
     }
 
-    onMounted(() => {
-      isInitialized.value = true
-    })
+    onMounted(initialize)
 
 
     function destroyOverlay() {
