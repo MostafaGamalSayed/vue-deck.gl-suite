@@ -25,7 +25,7 @@ export default defineConfig({
       {
         text: `v${pkg.version}`,
         items: [
-          { text: 'Changelog', link: 'https://github.com/MostafaGamalSayed/vue-deck.gl-suite/releases/tag/v1.0.0-beta.0' },
+          { text: 'Changelog', link: 'https://github.com/MostafaGamalSayed/vue-deck.gl-suite/blob/master/CHANGELOG.md#v100-beta2---2025-12-04' },
         ]
       },
     ],
