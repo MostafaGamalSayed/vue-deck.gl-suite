@@ -57,6 +57,12 @@ To ensure proper styling, include the `maplibre-gl` styles:
 
 ---
 
+## Documentation
+
+Be sure to check out our full [documentation](https://vue-deckgl-suite.wakeb.tech) for examples, guides, and more details.
+
+---
+
 ## Quick Usage
 
 ### Example: Declarative Syntax for Layers
@@ -150,12 +156,6 @@ If you'd like to contribute, please submit a Pull Request, make improvements, or
 3. Submit a Pull Request describing your improvements.
 
 We appreciate all contributors to this project and aim to create a flexible, community-driven geospatial visualization library for Vue.
-
----
-
-## Documentation
-
-Be sure to check out our full [documentation](./docs/guide/introduction.md) for examples, guides, and more details
 
 ---
 
