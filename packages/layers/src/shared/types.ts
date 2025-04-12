@@ -14,7 +14,7 @@ import type { Tile3DLayerProps, WMSLayerProps } from '@deck.gl/geo-layers'
 import type {
   GridLayerProps,
   HeatmapLayerProps,
-  HexagonLayerProps
+  HexagonLayerProps,
 } from '@deck.gl/aggregation-layers'
 
 /**

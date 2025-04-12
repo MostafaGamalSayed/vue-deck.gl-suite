@@ -21,7 +21,7 @@ export const iconLayerProps: ComponentPropsOptions = {
     default: Number.MAX_SAFE_INTEGER,
   },
   iconAtlas: {
-    type: String as PropType<IconLayerProps['iconAtlas']>
+    type: String as PropType<IconLayerProps['iconAtlas']>,
   },
   iconMapping: {
     type: [Object, String] as PropType<IconLayerProps['iconMapping']>,
@@ -35,10 +35,10 @@ export const iconLayerProps: ComponentPropsOptions = {
     default: 0.5,
   },
   loadOptions: {
-    type: Object as PropType<IconLayerProps['loadOptions']>
+    type: Object as PropType<IconLayerProps['loadOptions']>,
   },
   textureParameters: {
-    type: Object as PropType<IconLayerProps['textureParameters']>
+    type: Object as PropType<IconLayerProps['textureParameters']>,
   },
   getAngle: {
     type: [Function, Number] as PropType<IconLayerProps['getAngle']>,
@@ -61,8 +61,8 @@ export const iconLayerProps: ComponentPropsOptions = {
     default: (x: any) => x?.icon,
   },
   onIconError: {
-    type: Function as unknown as PropType<IconLayerProps['onIconError']>
-  }
+    type: Function as unknown as PropType<IconLayerProps['onIconError']>,
+  },
 }
 
 export const iconPropsKeys: (keyof IconLayerProps)[] = [
@@ -82,5 +82,5 @@ export const iconPropsKeys: (keyof IconLayerProps)[] = [
   'getSize',
   'getColor',
   'getIcon',
-  'onIconError'
+  'onIconError',
 ]

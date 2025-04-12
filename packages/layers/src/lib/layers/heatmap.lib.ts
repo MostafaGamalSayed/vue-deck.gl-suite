@@ -13,7 +13,7 @@ export const heatmapLayerProps: ComponentPropsOptions = {
     default: 30,
   },
   colorRange: {
-    type: Array as unknown as PropType<HeatmapLayerProps['colorRange']>
+    type: Array as unknown as PropType<HeatmapLayerProps['colorRange']>,
   },
   threshold: {
     type: Number as PropType<HeatmapLayerProps['threshold']>,

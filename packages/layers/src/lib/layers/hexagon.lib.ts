@@ -61,7 +61,7 @@ export const hexagonLayerProps: ComponentPropsOptions = {
     default: null,
   },
   colorRange: {
-    type: Array as unknown as PropType<HexagonLayerProps['colorRange']>
+    type: Array as unknown as PropType<HexagonLayerProps['colorRange']>,
   },
   elevationScaleType: {
     type: String as PropType<HexagonLayerProps['elevationScaleType']>,
@@ -85,17 +85,16 @@ export const hexagonLayerProps: ComponentPropsOptions = {
   },
   material: {
     type: [Object, Boolean] as PropType<HexagonLayerProps['material']>,
-    default: true
+    default: true,
   },
   extruded: {
     type: Boolean as PropType<HexagonLayerProps['extruded']>,
-    default: false
+    default: false,
   },
   getElevationWeight: {
     type: [Function, Number] as PropType<HexagonLayerProps['getElevationWeight']>,
     default: 1,
-  }
-
+  },
 }
 
 export const hexagonPropsKeys: (keyof HexagonLayerProps)[] = [
@@ -122,5 +121,5 @@ export const hexagonPropsKeys: (keyof HexagonLayerProps)[] = [
   'elevationLowerPercentile',
   'material',
   'getElevationWeight',
-  'extruded'
+  'extruded',
 ]

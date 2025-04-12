@@ -34,14 +34,13 @@ export const gridLayerProps: ComponentPropsOptions = {
   },
   colorRange: {
     type: Array as PropType<GridLayerProps['colorRange']>,
-
   },
   coverage: {
     type: Number as PropType<GridLayerProps['coverage']>,
     default: 1,
   },
   elevationDomain: {
-    type: Array as unknown as PropType<GridLayerProps['elevationDomain']>
+    type: Array as unknown as PropType<GridLayerProps['elevationDomain']>,
   },
   elevationScale: {
     type: Number as PropType<GridLayerProps['elevationScale']>,
@@ -130,5 +129,5 @@ export const gridPropsKeys: (keyof GridLayerProps)[] = [
   'getElevationValue',
   'material',
   'onSetColorDomain',
-  'onSetElevationDomain'
+  'onSetElevationDomain',
 ]
