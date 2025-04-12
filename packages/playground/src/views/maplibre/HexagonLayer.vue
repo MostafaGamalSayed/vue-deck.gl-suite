@@ -17,16 +17,7 @@ const radius = ref(200)
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
 
-function getData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json')
-    }, 1000)
-  })
-}
-
 onMounted(async () => {
-  data.value = await getData()
   setTimeout(() => {
     colorRange.value = [
       [1, 152, 189],
