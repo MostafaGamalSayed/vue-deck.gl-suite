@@ -1,26 +1,24 @@
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 import { pointCloudProps, pointCloudPropsKeys } from '@/lib/layers/point-cloud.lib.ts'
 import { PointCloudLayer, type PointCloudLayerProps } from '@deck.gl/layers'
-import { genDeckLayerOpts } from '@/utils'
 import { useLayer } from '@/composables/useLayer.ts'
 
 export default defineComponent({
   name: 'PointCloudLayer',
   props: { ...pointCloudProps },
   emits: ['hover', 'click', 'drag', 'dragStart', 'dragEnd', 'dataLoad', 'error'],
-  setup(props: PointCloudLayerProps, { emit }) {
-    function initialize() {
-      const opts: Partial<PointCloudLayerProps> = genDeckLayerOpts(
-        { ...props },
-        pointCloudPropsKeys,
-        emit,
-      )
+  setup(props: PointCloudLayerProps, { emit, expose }) {
+    // Use `useLayer` for layer lifecycle management
+    const { layer } = useLayer(
+      (opts) => new PointCloudLayer(opts), // Layer factory function
+      props,
+      pointCloudPropsKeys,
+      emit,
+    )
 
-      useLayer(() => new PointCloudLayer(opts))
-    }
+    // Expose the layer reference for external use
+    expose({ layer })
 
-    onMounted(initialize)
-
-    return () => []
+    return () => [] // Renderless component
   },
 })
