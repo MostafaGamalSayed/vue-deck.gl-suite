@@ -4,7 +4,7 @@ import { type App, type Plugin } from 'vue'
 import * as components from '@/components'
 
 // install function executed by Vue.use()
-const install: Exclude<Plugin['install'], undefined> = function installVueMaplibreGl(app: App) {
+const install: Exclude<Plugin['install'], undefined> = function installVueDeckglSuiteLayers(app: App) {
   Object.entries(components).forEach(([componentName, component]) => {
     app.component(componentName, component)
   })
