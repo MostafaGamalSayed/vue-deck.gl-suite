@@ -1,0 +1,84 @@
+{
+  "name": "@vue-deckgl-suite/google-maps",
+  "description": "A Vue 3 package integrating Deck.gl with Google Maps for geospatial visualizations",
+  "version": "1.0.0-beta.3",
+  "author": {
+    "name": "Mostafa Gamal",
+    "email": "mostafagamal99418@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MostafaGamalSayed/vue-deck.gl-suite.git"
+  },
+  "keywords": [
+    "deckgl",
+    "geo-layers",
+    "aggregation-layers",
+    "deckgl vue wrapper",
+    "wrapper",
+    "google maps",
+    "google",
+    "map layers",
+    "map",
+    "vue3",
+    "Vue.js",
+    "layers",
+    "components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "dist/vue-deckgl-suite-google-maps.umd.js",
+  "module": "dist/vue-deckgl-suite-google-maps.es.js",
+  "types": "dist/main.d.ts",
+  "web-types": "dist/web-types.json",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build && vue-docgen-web-types --configFile web-types.config.cjs",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "@googlemaps/markerclusterer": "^2.5.3"
+  },
+  "devDependencies": {
+    "@deck.gl/core": "^9.1.8",
+    "@deck.gl/google-maps": "^9.1.8",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.1",
+    "@types/google.maps": "^3.58.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/eslint-config-typescript": "^14.3.0",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "jiti": "^2.4.2",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.4.2",
+    "typescript": "~5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-vue-devtools": "^7.7.1",
+    "vue": "^3.5.13",
+    "vue-docgen-web-types": "^0.1.8",
+    "vue-tsc": "^2.2.0"
+  },
+  "peerDependencies": {
+    "@deck.gl/core": "^9.1.8",
+    "@deck.gl/google-maps": "^9.1.8",
+    "vue": "^3.5.13"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "gitHead": "6748997e3584871bafea9f3d997dac136d4e8563"
+}
