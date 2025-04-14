@@ -34,6 +34,7 @@ export default defineConfig({
       external: [
         'vue',
         '@deck.gl/core',
+        '@deck.gl/mapbox',
         'maplibre-gl'
       ],
       output: {
