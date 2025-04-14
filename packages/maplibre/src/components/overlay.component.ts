@@ -11,7 +11,7 @@ import {
 } from 'vue'
 import { overlayProps, overlayPropsKeys } from '../lib/overlay.lib.ts'
 import { MapboxOverlay, type MapboxOverlayProps } from '@deck.gl/mapbox'
-import { overlayInstanceSymbol } from '@/shared/constants.ts'
+import { mapboxOverlayInstanceSymbol } from '@/shared/constants.ts'
 import { type Layer } from '@deck.gl/core'
 import { genDeckOpts } from '@/utils/genDeckOpts.ts'
 
@@ -41,7 +41,7 @@ export default defineComponent({
     const layers: Ref<MapboxOverlayProps['layers']> = ref([]) // Reactive state for layers
 
     // Provide Deck instance and helper methods to descendants
-    provide(overlayInstanceSymbol, overlayInstance) // Share deck instance with child components
+    provide(mapboxOverlayInstanceSymbol, overlayInstance) // Share deck instance with child components
     provide('removeLayer', (layer: Layer) => {
       // Function to remove layers dynamically
       layers.value = layers.value?.filter(existingLayer => existingLayer !== layer)

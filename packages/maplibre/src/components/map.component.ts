@@ -29,7 +29,7 @@ import {
   type MapProps,
 } from '@/lib/map.lib'
 import { isLngLatEqual } from '@/utils/isLngLatEqual'
-import { overlayInstanceSymbol } from '@/shared/constants.ts'
+import { mapboxOverlayInstanceSymbol } from '@/shared/constants.ts'
 
 const { Map: MaplibreMap} = maplibre;
 
@@ -129,7 +129,7 @@ export default defineComponent({
     provide(isLoadedSymbol, isLoaded)
     provide(isInitializedSymbol, isInitialized)
 
-    const overlayInstance = inject(overlayInstanceSymbol)
+    const overlayInstance = inject(mapboxOverlayInstanceSymbol)
 
     /*
      * bind prop watchers
