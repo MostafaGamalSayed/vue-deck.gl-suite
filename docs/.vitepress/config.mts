@@ -1,9 +1,12 @@
 import { createRequire } from 'module'
-import { type DefaultTheme, defineConfig } from 'vitepress'
+import { type DefaultTheme, defineConfig, loadEnv } from 'vitepress'
 
 // @ts-ignore
 const require = createRequire(import.meta.url)
 const pkg = require('../../package.json')
+
+const env = loadEnv('', process.cwd(), '')
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -46,6 +49,12 @@ export default defineConfig({
         items: sidebarMaplibre()
       },
       {
+        text: '@vue-geo-suite/google-maps',
+        collapsed: false,
+        link: '/google-maps/',
+        items: sidebarGoogleMaps()
+      },
+      {
         text: '@vue-geo-suite/layers',
         collapsed: false,
         link: '/layers/',
@@ -63,13 +72,27 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/MostafaGamalSayed/vue-deck.gl-suite' }
     ]
+  },
+  vite: {
+    define: {
+      __GOOGLE_MAPS_KEY__: JSON.stringify(env),
+    },
   }
+
+
 })
 
 function sidebarMaplibre(): DefaultTheme.SidebarItem[] {
   return [
     { text: 'Map', link: '/maplibre/maplibre-basemap' },
     { text: 'DeckGL', link: '/maplibre/mapbox-overlay' },
+  ]
+}
+
+function sidebarGoogleMaps(): DefaultTheme.SidebarItem[] {
+  return [
+    { text: 'Map', link: '/google-maps/google-basemap' },
+    { text: 'DeckGL', link: '/google-maps/google-overlay' },
   ]
 }
 
