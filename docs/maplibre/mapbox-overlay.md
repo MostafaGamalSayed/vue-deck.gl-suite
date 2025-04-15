@@ -122,4 +122,4 @@ The `DeckGL` component emits the following events, allowing you to handle user i
 
 ---
 
-For further details on Deck.gl layers and their props, check the [Deck.gl documentation](https://deck.gl/docs/api-reference/mapbox/mapbox-overlay).
+For further details, check the [Deck.gl documentation](https://deck.gl/docs/api-reference/mapbox/mapbox-overlay).
