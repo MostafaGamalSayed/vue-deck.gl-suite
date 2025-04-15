@@ -172,11 +172,11 @@ Alternatively, use Deck.gl layers as ES6 class instances:
 
 ### Modular Packages
 The `@vue-deckgl-suite` consists of 3 main packages:
-1. **[`@vue-deckgl-suite/maplibre`](./docs/maplibre-basemap/)**:
+1. **[`@vue-deckgl-suite/maplibre`](https://vue-deckgl-suite/maplibre)**:
    Provides integration with **MapLibre** for basemaps.
-2. **[`@vue-deckgl-suite/google-maps`](./docs/google-basemap/)**:
+2. **[`@vue-deckgl-suite/google-maps`](https://vue-deckgl-suite/google-maps)**:
    Provides integration with **google** for basemaps.
-3. **[`@vue-deckgl-suite/layers`](./docs/layers/)**:
+3. **[`@vue-deckgl-suite/layers`](https://vue-deckgl-suite/layers)**:
    Allows the use of Vue components for Deck.gl layers to simplify layer management.
 
 ### Flexible Layer Rendering
