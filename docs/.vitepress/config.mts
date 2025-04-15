@@ -49,7 +49,7 @@ export default defineConfig({
         items: sidebarMaplibre()
       },
       {
-        text: '@vue-geo-suite/google-maps',
+        text: '@vue-geo-suite/google',
         collapsed: false,
         link: '/google-maps/',
         items: sidebarGoogleMaps()
