@@ -1,57 +1,84 @@
-# @vue-deckgl-suite/layers
-The **[@vue-deckgl-suite](https://github.com/MostafaGamalSayed/vue-deck.gl-suite)** monorepo is built to provide a seamless integration of **Deck.gl** and **Vue-based applications**, enabling the development of high-performance geospatial visualizations with ease. It consists of a series of modular packages that work together to support various basemaps and visualization use cases.
+# @vue-deckgl-suite/maplibre
 
-The `@vue-deckgl-suite/maplibre` package provides powerful Vue components to integrate **MapLibre** maps with **Deck.gl** layers, enabling you to build high-performance interactive geospatial visualizations. These components simplify handling maps and MapboxOverlay for your applications, leveraging both **Deck.gl** and **MapLibre** capabilities.
+The **[@vue-deckgl-suite](https://github.com/MostafaGamalSayed/vue-deck.gl-suite)** monorepo enables seamless integration between **Deck.gl** and Vue-based applications for high-performance geospatial visualizations. Among its modular packages, the `@vue-deckgl-suite/maplibre` package provides powerful Vue components for integrating **MapLibre** maps with Deck.gl layers.
+
+With this package, developers can:
+- Render complex **Deck.gl** visualizations on top of interactive basemaps powered by **MapLibre GL**.
+- Leverage **Vue's declarative syntax** to create clean and scalable geospatial applications.
 
 ---
+
 ## Documentation
-For more information about available layers, supported basemaps, and future integrations, refer to the full documentation of the **[@vue-deckgl-suite](https://vue-deckgl-suite.wakeb.tech/)** package.
+
+Comprehensive documentation, guides, and examples are available at the **[@vue-deckgl-suite documentation →](https://vue-deckgl-suite.wakeb.tech/)**.
 
 ---
 
-## Overview of Packages
+## Features
 
-### `@vue-deckgl-suite/maplibre`
-This package provides two core components:
-1. **`Map`**: A Map component for **MapLibre GL**, a powerful and customizable open-source basemap provider.
-2. **`DeckGL`**: An overlay component that facilitates rendering of **Deck.gl** visualization layers on top of the MapLibre map.
+- 🗺 **MapLibre Basemap Support**: Effortlessly set up basemaps using the MapLibre GL library.
+- 📊 **Deck.gl Overlays**: Add and manage data visualization layers with full Deck.gl support.
+- 🔄 **Declarative or Programmatic Layer Rendering**: Choose between declarative Vue components for layers or programmatic ES6 instances.
 
-Developers using only the **`@vue-deckgl-suite/maplibre`** package can define Deck.gl layers as **ES6 class instances** and pass them to the `layers` prop of the `DeckGL` component. This is the default behavior and requires familiarity with the Deck.gl API.
+---
 
+## Installation
 
-### `@vue-deckgl-suite/layers`
-The **`@vue-deckgl-suite/layers`** package introducing declarative support for creating Deck.gl layers using Vue components. This package allows developers to define Deck.gl layers as **Vue child components**, nested inside the `DeckGL` overlay. This declarative syntax streamlines development by aligning with Vue's component-based architecture.
+### 1. Install the Package
+```bash
+# With npm
+npm install @vue-deckgl-suite/maplibre maplibre-gl
 
-## Usage Scenarios
+# Or with yarn
+yarn add @vue-deckgl-suite/maplibre maplibre-gl
 
-Depending on the combination of packages used, you have two options for defining and rendering Deck.gl layers.
+# Or with pnpm
+pnpm add @vue-deckgl-suite/maplibre maplibre-gl
+```
 
-### 1. Using Only `@vue-deckgl-suite/maplibre`
-In this case, you will use the **`DeckGL` component** as an overlay for MapLibre and provide all Deck.gl layers as **ES6 class instances** to the `layers` prop. Example:
+### 2. Install Peer Dependencies
+This package requires the following `deck.gl` dependencies:
+```bash
+npm install @deck.gl/core @deck.gl/layers @deck.gl/geo-layers @deck.gl/aggregation-layers @deck.gl/mapbox
+```
 
+### 3. Add Required Styles
+Include MapLibre's CSS file for proper map rendering:
+```scss
+@import "maplibre-gl/dist/maplibre-gl.css";
+```
+
+---
+
+## Example Usage
+
+### Using Only `@vue-deckgl-suite/maplibre`
 ```vue
-<script setup>
-  import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
-  import { HeatmapLayer } from '@deck.gl/aggregation-layers'
+<script>
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
+import { ColumnLayer } from '@deck.gl/layers'
 
-  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
-
-  const layer = new HeatmapLayer({
-    id: 'HeatmapLayer',
-    data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
-
-    aggregation: 'SUM',
-    getPosition: d => d.COORDINATES,
-    getWeight: d => d.SPACES,
-    radiusPixels: 25
-  });
+const layers = new ColumnLayer({
+    id: 'ColumnLayer',
+    data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json',
+    diskResolution: 12,
+    extruded: true,
+    radius: 250,
+    elevationScale: 5000,
+    getElevation: (d) => d.value,
+    getFillColor: (d) => [48, 128, d.value * 255, 255],
+    getPosition: (d) => d.centroid,
+})
 </script>
 
 <template>
-  <DeckGL :layers="[layer]">
+  <DeckGL
+    :layers="[layers]"
+    :getTooltip="({ object }) => object && `${object.from.name} to ${object.to.name}`"
+  >
     <Map
       height="100vh"
-      :style
+      :style="`https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json`"
       :center="[-122.4, 37.74]"
       :zoom="11"
       :max-zoom="20"
@@ -64,21 +91,19 @@ In this case, you will use the **`DeckGL` component** as an overlay for MapLibre
 <style lang="scss">
   @import 'maplibre-gl/dist/maplibre-gl.css';
 </style>
-
 ```
 
-This approach ensures full flexibility for programmatically managing Deck.gl layers and is suitable when only using `@vue-deckgl-suite/maplibre`.
+---
 
-
-### 2. Using Both `@vue-deckgl-suite/maplibre` and `@vue-deckgl-suite/layers`
-When both packages are used, you can utilize **declarative Vue syntax** to define Deck.gl layers as child components of the `DeckGL` overlay. Example:
+### Using `@vue-deckgl-suite/maplibre` with `@vue-deckgl-suite/layers`
+By combining `@vue-deckgl-suite/maplibre` with `@vue-deckgl-suite/layers`, you can utilize **Vue's declarative syntax** to define Deck.gl layers as Vue components. This approach simplifies the process of managing and rendering layers.
 
 ```vue
 <script setup>
-  import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
-  import { ColumnLayer } from '@vue-deckgl-suite/layers';
+  import { Map, DeckGL } from '@vue-deckgl-suite/maplibre'
+  import { ColumnLayer } from '@vue-deckgl-suite/layers'
 
-  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 </script>
 
 <template>
@@ -106,6 +131,17 @@ When both packages are used, you can utilize **declarative Vue syntax** to defin
     />
   </DeckGL>
 </template>
+
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
 ```
 
-With this approach, the **`@vue-deckgl-suite/layers`** package simplifies configuration by allowing each layer to be treated as a standalone Vue component. Props passed to each component map directly to Deck.gl class attributes.
+In this example:
+- **`Map`**: Provides the basemap using **MapLibre GL**.
+- **`ColumnLayer`**: Adds a ColumnLayer layer declaratively through the `@vue-deckgl-suite/layers` package.
+- **Props**: The layer component's props map directly to its Deck.gl ES6 API equivalent, making configuration concise and Vue-friendly.
+
+---
+
+With `@vue-deckgl-suite/maplibre` and `@vue-deckgl-suite/layers`, developers can easily build highly interactive and visually dynamic geospatial applications using Vue's declarative component patterns alongside Deck.gl's rendering power.
