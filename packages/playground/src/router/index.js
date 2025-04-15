@@ -64,6 +64,11 @@ const router = createRouter({
       component: () => import('../views/maplibre/HexagonLayer.vue'),
     },
     {
+      path: '/google/hexagon-layer',
+      name: 'google-hexagon-layer',
+      component: () => import('../views/google/HexagonLayer.vue'),
+    },
+    {
       path: '/maplibre/icon-layer',
       name: 'maplibre-icon-layer',
       component: () => import('../views/maplibre/IconLayer.vue'),
@@ -87,6 +92,11 @@ const router = createRouter({
       path: '/maplibre/point-cloud-layer',
       name: 'maplibre-point-cloud-layer',
       component: () => import('../views/maplibre/PointCloudLayer.vue'),
+    },
+    {
+      path: '/google/basemap',
+      name: 'google-basemap',
+      component: () => import('../views/google/GoogleMap.vue'),
     },
   ],
 })
