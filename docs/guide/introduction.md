@@ -12,16 +12,24 @@ This package provides two core components:
 Developers using only the **`@vue-deckgl-suite/maplibre`** package can define Deck.gl layers as **ES6 class instances** and pass them to the `layers` prop of the `DeckGL` component. This is the default behavior and requires familiarity with the Deck.gl API.
 
 ---
+### `@vue-deckgl-suite/google-maps`
+This package provides two core components:
+1. **`Map`**: A Map component for **Google Maps** basemap provider.
+2. **`DeckGL`**: An overlay component that facilitates rendering of **Deck.gl** visualization layers on top of the Google map.
+
+Developers using only the **`@vue-deckgl-suite/google-maps`** package can define Deck.gl layers as **ES6 class instances** and pass them to the `layers` prop of the `DeckGL` component. This is the default behavior and requires familiarity with the Deck.gl API.
+
+---
 
 ### `@vue-deckgl-suite/layers`
-The **`@vue-deckgl-suite/layers`** package builds upon the `@vue-deckgl-suite/maplibre` package by introducing declarative support for creating Deck.gl layers using Vue components. This package allows developers to define Deck.gl layers as **Vue child components**, nested inside the `DeckGL` overlay. This declarative syntax streamlines development by aligning with Vue's component-based architecture.
+The **`@vue-deckgl-suite/layers`** package builds upon the `@vue-deckgl-suite/maplibre` and `@vue-deckgl-suite/google-maps` packages by introducing declarative support for creating Deck.gl layers using Vue components. This package allows developers to define Deck.gl layers as **Vue child components**, nested inside the `DeckGL` overlay. This declarative syntax streamlines development by aligning with Vue's component-based architecture.
 
 
 ## Usage Scenarios
 
 Depending on the combination of packages used, you have two options for defining and rendering Deck.gl layers.
 
-### 1. Using Only `@vue-deckgl-suite/maplibre`
+### 1. Using Only `@vue-deckgl-suite/maplibre` OR `@vue-deckgl-suite/google-maps`
 In this case, you will use the **`DeckGL` component** as an overlay for MapLibre and provide all Deck.gl layers as **ES6 class instances** to the `layers` prop. Example:
 
 ```vue
@@ -51,7 +59,7 @@ const heatmapLayer = new HeatmapLayer({
 This approach ensures full flexibility for programmatically managing Deck.gl layers and is suitable when only using `@vue-deckgl-suite/maplibre`.
 
 
-### 2. Using Both `@vue-deckgl-suite/maplibre` and `@vue-deckgl-suite/layers`
+### 2. Integrate on of the 2 packages: `@vue-deckgl-suite/maplibre` or `@vue-deckgl-suite/google-maps` with `@vue-deckgl-suite/layers`
 When both packages are used, you can utilize **declarative Vue syntax** to define Deck.gl layers as child components of the `DeckGL` overlay. Example:
 
 ```vue
