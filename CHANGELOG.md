@@ -1,4 +1,30 @@
-## [v1.0.0-beta.2] - 2025-12-04
+## [v1.0.0-beta.3] - 2025-04-16
+
+### ✨ New Features:
+
+- **Google Maps Integration:**
+  - Added support for Google Maps as a basemap with the new `@vue-deckgl-suite/google-maps` package.
+  - Introduced Vue components for Google Maps, including:
+    - `Map`: A Google Maps wrapper with extensive property and event support.
+    - **Integration Examples:** Showcases layers like `HexagonLayer` and `ArcLayer` with Google Maps as the underlying basemap.
+  - Support for managing environment-specific settings using a new `__GOOGLE_MAPS_KEY__` definition in the Vite configuration.
+
+---
+
+### 🔧 Improvements:
+
+- **Environment Variable Support in Vite Config:**
+  - Refactored Vite configuration to use `loadEnv`, allowing for easier management of environment-specific variables, especially for keys like Google Maps API.
+
+- **Documentation Enhancements:**
+  - Updated READMEs and additional documentation for `@vue-deckgl-suite/google-maps` integration, including:
+    - Step-by-step installation process.
+    - Sample usage with both declarative and programmatic approaches.
+    - Advanced examples of geospatial visualizations using Google Maps and Deck.gl layers. .
+
+---
+
+## [v1.0.0-beta.2] - 2025-04-12
 
 ### 🚀 Refactor: Enhanced Deck.gl Layer Management
 
