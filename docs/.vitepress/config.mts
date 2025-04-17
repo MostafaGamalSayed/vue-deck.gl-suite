@@ -44,21 +44,27 @@ export default defineConfig({
       },
       {
         text: '@vue-geo-suite/maplibre',
-        collapsed: false,
+        collapsed: true,
         link: '/maplibre/',
         items: sidebarMaplibre()
       },
       {
         text: '@vue-geo-suite/google',
-        collapsed: false,
+        collapsed: true,
         link: '/google-maps/',
         items: sidebarGoogleMaps()
       },
       {
         text: '@vue-geo-suite/layers',
-        collapsed: false,
+        collapsed: true,
         link: '/layers/',
         items: sidebarLayers()
+      },
+      {
+        text: 'Examples',
+        collapsed: true,
+        link: '/examples/',
+        items: sidebarExamples()
       }
     ],
     search: {
@@ -108,5 +114,20 @@ function sidebarLayers(): DefaultTheme.SidebarItem[] {
     { text: 'Icon Layer', link: '/layers/icon-layer' },
     { text: 'Point Cloud Layer', link: '/layers/point-cloud-layer' },
     { text: 'WMS Layer', link: '/layers/wms-layer' },
+  ]
+}
+
+function sidebarExamples(): DefaultTheme.SidebarItem[] {
+  return [
+    { text: 'Arc Layer', link: '/examples/arc-layer' },
+    { text: 'GeoJson Layer', link: '/examples/geojson-layer' },
+    { text: 'Hexagon Layer', link: '/examples/hexagon-layer' },
+    { text: 'Grid Layer', link: '/examples/grid-layer' },
+    { text: 'Column Layer', link: '/examples/column-layer' },
+    { text: 'Path Layer', link: '/examples/path-layer' },
+    { text: 'Trips Layer', link: '/examples/trips-layer' },
+    { text: 'Icon Layer', link: '/examples/icon-layer' },
+    { text: 'Point Cloud Layer', link: '/examples/point-cloud-layer' },
+    { text: 'WMS Layer', link: '/examples/wms-layer' },
   ]
 }
