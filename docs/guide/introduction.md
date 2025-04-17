@@ -33,27 +33,43 @@ Depending on the combination of packages used, you have two options for defining
 In this case, you will use the **`DeckGL` component** as an overlay for MapLibre and provide all Deck.gl layers as **ES6 class instances** to the `layers` prop. Example:
 
 ```vue
-<script setup>
-import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
-import { HeatmapLayer } from '@deck.gl/aggregation-layers'
+<script>
+  import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
+  import { ColumnLayer } from '@deck.gl/layers'
 
-const heatmapLayer = new HeatmapLayer({
-  id: 'heatmap',
-  data: 'data-url.json',
-  getPosition: d => d.coordinates,
-  getWeight: d => d.value,
-})
+  const layers = new ColumnLayer({
+    id: 'ColumnLayer',
+    data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json',
+    diskResolution: 12,
+    extruded: true,
+    radius: 250,
+    elevationScale: 5000,
+    getElevation: (d) => d.value,
+    getFillColor: (d) => [48, 128, d.value * 255, 255],
+    getPosition: (d) => d.centroid,
+  })
 </script>
 
 <template>
-  <DeckGL :layers="[heatmapLayer]">
+  <DeckGL
+    :layers="[layers]"
+    :getTooltip="({ object }) => object && `${object.from.name} to ${object.to.name}`"
+  >
     <Map
-      center="[-122.4, 37.74]"
+      height="100vh"
+      :style="`https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json`"
+      :center="[-122.4, 37.74]"
       :zoom="11"
-      style="width: 100%; height: 100%;"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
     />
   </DeckGL>
 </template>
+
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
 ```
 
 This approach ensures full flexibility for programmatically managing Deck.gl layers and is suitable when only using `@vue-deckgl-suite/maplibre`.
@@ -63,21 +79,42 @@ This approach ensures full flexibility for programmatically managing Deck.gl lay
 When both packages are used, you can utilize **declarative Vue syntax** to define Deck.gl layers as child components of the `DeckGL` overlay. Example:
 
 ```vue
+<script setup>
+  import { Map, DeckGL } from '@vue-deckgl-suite/maplibre'
+  import { ColumnLayer } from '@vue-deckgl-suite/layers'
+
+  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+</script>
+
 <template>
-  <DeckGL>
+  <DeckGL :getTooltip="({ object }) => object && `height: ${object.value * 5000}m`">
     <Map
-      center="[-122.4, 37.74]"
+      height="100vh"
+      :style
+      :center="[-122.4, 37.74]"
       :zoom="11"
-      style="width: 100%; height: 100%;"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
     />
-    <HeatmapLayer
-      id="heatmap"
-      data="data-url.json"
-      :getPosition="d => d.coordinates"
-      :getWeight="d => d.value"
+    <ColumnLayer
+      id="ColumnLayer"
+      data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json"
+      :diskResolution="12"
+      :extruded="true"
+      :radius="250"
+      :elevationScale="5000"
+      :getElevation="(d) => d.value"
+      :getFillColor="(d) => [48, 128, d.value * 255, 255]"
+      :getPosition="(d) => d.centroid"
+      :pickable="true"
     />
   </DeckGL>
 </template>
+
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
 ```
 
 With this approach, the **`@vue-deckgl-suite/layers`** package simplifies configuration by allowing each layer to be treated as a standalone Vue component. Props passed to each component map directly to Deck.gl class attributes.
