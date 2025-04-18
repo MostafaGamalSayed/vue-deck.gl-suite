@@ -15,7 +15,7 @@ The **`@vue-deckgl-suite`** is a modular monorepo built for seamless integration
 - 🧩 **Modular Design**: Use only the required modules for your project.
 - 🚀 **High Performance**: Harness the GPU-accelerated rendering of **Deck.gl**.
 - 🔧 **Declarative Syntax**: Define visualization layers as Vue components, keeping code clean and structured.
-- 🌎 **Basemap Integration**: Full support for **MapLibre** as the current basemap provider with plans for **Google Maps**, **Mapbox**, and others in the future.
+- 🌎 **Basemap Integration**: Full support for **MapLibre** and **Google Maps** as the current basemap providers with plans for **Mapbox**, and others in the future.
 - 🔄 **Two Usage Patterns**: Choose between:
     1. Declarative Vue components for Deck.gl layers.
     2. Programmatic ES6 class instances provided directly to the DeckGL overlay.
