@@ -15,7 +15,7 @@ The **`@vue-deckgl-suite`** is a modular monorepo built for seamless integration
 - 🧩 **Modular Design**: Use only the required modules for your project.
 - 🚀 **High Performance**: Harness the GPU-accelerated rendering of **Deck.gl**.
 - 🔧 **Declarative Syntax**: Define visualization layers as Vue components, keeping code clean and structured.
-- 🌎 **Basemap Integration**: Full support for **MapLibre** as the current basemap provider with plans for **Google Maps**, **Mapbox**, and others in the future.
+- 🌎 **Basemap Integration**: Full support for **MapLibre** and **Google Maps** as the current basemap providers with plans for **Mapbox**, and others in the future.
 - 🔄 **Two Usage Patterns**: Choose between:
     1. Declarative Vue components for Deck.gl layers.
     2. Programmatic ES6 class instances provided directly to the DeckGL overlay.
@@ -85,6 +85,48 @@ Be sure to check out our full [documentation](https://vue-deckgl-suite.wakeb.tec
 With the declarative approach, you can define Deck.gl layers directly as Vue components.
 
 ```vue
+<script setup>
+  import { Map, DeckGL } from '@vue-deckgl-suite/maplibre'
+  import { ColumnLayer } from '@vue-deckgl-suite/layers'
+
+  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+</script>
+
+<template>
+  <DeckGL :getTooltip="({ object }) => object && `height: ${object.value * 5000}m`">
+    <Map
+      height="100vh"
+      :style
+      :center="[-122.4, 37.74]"
+      :zoom="11"
+      :max-zoom="20"
+      :pitch="30"
+      :bearing="0"
+    />
+    <ColumnLayer
+      id="ColumnLayer"
+      data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json"
+      :diskResolution="12"
+      :extruded="true"
+      :radius="250"
+      :elevationScale="5000"
+      :getElevation="(d) => d.value"
+      :getFillColor="(d) => [48, 128, d.value * 255, 255]"
+      :getPosition="(d) => d.centroid"
+      :pickable="true"
+    />
+  </DeckGL>
+</template>
+
+<style lang="scss">
+  @import 'maplibre-gl/dist/maplibre-gl.css';
+</style>
+```
+
+### Example: Programmatic Usage
+Alternatively, use Deck.gl layers as ES6 class instances:
+
+```vue
 <script>
   import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
   import { ColumnLayer } from '@deck.gl/layers'
@@ -115,48 +157,6 @@ With the declarative approach, you can define Deck.gl layers directly as Vue com
       :max-zoom="20"
       :pitch="30"
       :bearing="0"
-    />
-  </DeckGL>
-</template>
-
-<style lang="scss">
-  @import 'maplibre-gl/dist/maplibre-gl.css';
-</style>
-```
-
-### Example: Programmatic Usage
-Alternatively, use Deck.gl layers as ES6 class instances:
-
-```vue
-<script setup>
-  import { Map, DeckGL } from '@vue-deckgl-suite/maplibre'
-  import { ColumnLayer } from '@vue-deckgl-suite/layers'
-
-  const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
-</script>
-
-<template>
-  <DeckGL :getTooltip="({ object }) => object && `height: ${object.value * 5000}m`">
-    <Map
-      height="100vh"
-      :style
-      :center="[-122.4, 37.74]"
-      :zoom="11"
-      :max-zoom="20"
-      :pitch="30"
-      :bearing="0"
-    />
-    <ColumnLayer
-      id="ColumnLayer"
-      data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/hexagons.json"
-      :diskResolution="12"
-      :extruded="true"
-      :radius="250"
-      :elevationScale="5000"
-      :getElevation="(d) => d.value"
-      :getFillColor="(d) => [48, 128, d.value * 255, 255]"
-      :getPosition="(d) => d.centroid"
-      :pickable="true"
     />
   </DeckGL>
 </template>
