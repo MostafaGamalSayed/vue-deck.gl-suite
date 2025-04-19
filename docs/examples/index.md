@@ -15,6 +15,12 @@ Explore the interactive examples below to learn how to use different layers in *
 - **[Icon Layer](/examples/icon-layer/):** Renders icons or images at specific geospatial positions.
 - **[Point Cloud Layer](/examples/point-cloud-layer/):** Renders 3D point clouds, typically used for visualizing large
   sets of points in space.
+- **[Polygon Layer](/examples/polygon-layer/):** Renders filled or stroked polygons, useful for visualizing areas,
+   boundaries, or other polygon-based data.
+- **[Contour Layer](/examples/contour-layer/):** Generates contour lines or filled contour regions, useful for visualizing
+    elevation or density data.
+- **[Scatterplot Layer](/examples/scatterplot-layer/):** Renders scatter points with options to customize size, color, and
+  opacity for data visualization.
 - **[WMS Layer](/examples/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
 
 Learn more about each layer by visiting its dedicated page.

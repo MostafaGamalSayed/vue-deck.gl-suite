@@ -45,6 +45,13 @@ Here is a list of the layers available in `@vue-deckgl-suite/layers`. Each provi
 - **[Icon Layer](/layers/icon-layer/):** Renders icons or images at specific geospatial positions.
 - **[Point Cloud Layer](/layers/point-cloud-layer/):** Renders 3D point clouds, typically used for visualizing large
   sets of points in space.
+- **[Polygon Layer](/layers/polygon-layer/):** Renders filled or stroked polygons, useful for visualizing areas,
+  boundaries, or other polygon-based data.
+- **[Contour Layer](/layers/contour-layer/):** Generates contour lines or filled contour regions, useful for visualizing
+  elevation or density data.
+
+- **[Scatterplot Layer](/layers/scatterplot-layer/):** Renders scatter points with options to customize size, color, and
+  opacity for data visualization.
 - **[WMS Layer](/layers/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
 
 Learn more about each layer by visiting its dedicated page.
