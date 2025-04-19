@@ -68,7 +68,10 @@ export default defineConfig({
       }
     ],
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        detailedView: true,
+      }
     },
     footer: {
       message: 'Released under the MIT License.',
@@ -113,6 +116,9 @@ function sidebarLayers(): DefaultTheme.SidebarItem[] {
     { text: 'Trips Layer', link: '/layers/trips-layer' },
     { text: 'Icon Layer', link: '/layers/icon-layer' },
     { text: 'Point Cloud Layer', link: '/layers/point-cloud-layer' },
+    { text: 'Polygon Layer', link: '/layers/polygon-layer' },
+    { text: 'Contour Layer', link: '/layers/contour-layer' },
+    { text: 'Scatterplot Layer', link: '/layers/scatterplot-layer' },
     { text: 'WMS Layer', link: '/layers/wms-layer' },
   ]
 }
@@ -128,6 +134,9 @@ function sidebarExamples(): DefaultTheme.SidebarItem[] {
     { text: 'Trips Layer', link: '/examples/trips-layer' },
     { text: 'Icon Layer', link: '/examples/icon-layer' },
     { text: 'Point Cloud Layer', link: '/examples/point-cloud-layer' },
+    { text: 'Polygon Layer', link: '/examples/polygon-layer' },
+    { text: 'Contour Layer', link: '/examples/contour-layer' },
+    { text: 'Scatterplot Layer', link: '/examples/scatterplot-layer' },
     { text: 'WMS Layer', link: '/examples/wms-layer' },
   ]
 }
