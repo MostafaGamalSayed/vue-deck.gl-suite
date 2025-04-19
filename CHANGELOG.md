@@ -1,3 +1,23 @@
+## [v1.0.0-beta.4] - 2025-04-20
+
+### ✨ New Features:
+
+- **Support for New Layers:**
+  - Introduced declarative support for the following new Deck.gl layer components in `@vue-deckgl-suite/layers`:
+    - `PolygonLayer`: Enables rendering of polygon-shaped geospatial data.
+    - `ContourLayer`: Provides support for generating isocontours (contour lines/polygons) from spatial datasets.
+    - `ScatterplotLayer`: Allows visualization of point data with support for variable point sizes, colors, and interactivity.
+  - Example-based documentation has been added for each of these layers, demonstrating their usage with `@vue-deckgl-suite/maplibre`.
+
+---
+
+### 📝 Documentation:
+
+- **Layer Guides and Examples:**
+  - Added detailed documentation and examples for the new `PolygonLayer`, `ContourLayer`, and `ScatterplotLayer` in the developer guide.
+  - Examples utilize both **MapLibre** and **Google Maps** base maps, showcasing flexibility in integration.
+
+
 ## [v1.0.0-beta.3] - 2025-04-16
 
 ### ✨ New Features:
