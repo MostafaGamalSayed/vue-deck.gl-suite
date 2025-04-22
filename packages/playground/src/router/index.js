@@ -69,6 +69,12 @@ const router = createRouter({
       component: () => import('../views/google/HexagonLayer.vue'),
     },
     {
+      path: '/maplibre/road-safety',
+      name: 'maplibre-road-safety',
+      component: () => import('../views/maplibre/HexagonLayerRoadSafety.vue'),
+    },
+
+    {
       path: '/maplibre/icon-layer',
       name: 'maplibre-icon-layer',
       component: () => import('../views/maplibre/IconLayer.vue'),
