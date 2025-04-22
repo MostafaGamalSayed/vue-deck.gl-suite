@@ -16,25 +16,6 @@ const radius = ref(200)
 
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
-
-onMounted(async () => {
-  setTimeout(() => {
-    colorRange.value = [
-      [1, 152, 189],
-      [73, 227, 206],
-      [216, 254, 181],
-      [254, 237, 177],
-      [254, 173, 84],
-      [209, 55, 78],
-      [166, 86, 40],
-      [247, 129, 191],
-      [153, 153, 153],
-    ]
-
-    radius.value = 100
-  }, 5000)
-})
-
 </script>
 
 <template>
