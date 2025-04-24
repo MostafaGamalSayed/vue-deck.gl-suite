@@ -126,7 +126,7 @@ function sidebarLayers(): DefaultTheme.SidebarItem[] {
 function sidebarExamples(): DefaultTheme.SidebarItem[] {
   return [
     { text: 'Arc Layer', link: '/examples/arc-layer' },
-    { text: 'GeoJson Layer', link: '/examples/geojson-layer' },
+    { text: 'GeoJson Layer (Paths)', link: '/examples/geojson-layer-paths' },
     { text: 'Hexagon Layer', link: '/examples/hexagon-layer' },
     { text: 'Grid Layer', link: '/examples/grid-layer' },
     { text: 'Column Layer', link: '/examples/column-layer' },

@@ -5,7 +5,7 @@ Explore the interactive examples below to learn how to use different layers in *
 ## Layer Examples
 
 - **[Arc Layer](/examples/arc-layer/):** Draws great arcs (curves) between two points on a map.
-- **[GeoJson Layer](/examples/geojson-layer/):** Visualizes GeoJSON data with full feature support.
+- **[GeoJson Layer (Paths)](/examples/geojson-layer-paths/):** Visualizes GeoJSON data with full feature support.
 - **[Hexagon Layer](/examples/hexagon-layer/):** Aggregates scattered data points into hexagonal grids.
 - **[Grid Layer](/examples/grid-layer/):** Organizes and visualizes points within rectangular grids.
 - **[Column Layer](/examples/column-layer/):** Visualizes data as vertical cylinders, useful for 3D geospatial data
