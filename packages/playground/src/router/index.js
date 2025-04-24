@@ -103,23 +103,29 @@ const router = createRouter({
     {
       path: '/maplibre/polygon-layer',
       name: 'maplibre-polygon-layer',
-      component: () => import('../views/maplibre/PolygonLayer.vue')
+      component: () => import('../views/maplibre/PolygonLayer.vue'),
     },
 
     {
       path: '/maplibre/scatterplot-layer',
       name: 'maplibre-scatterplot-layer',
-      component: () => import('../views/maplibre/ScatterplotLayer.vue')
+      component: () => import('../views/maplibre/ScatterplotLayer.vue'),
     },
     {
       path: '/maplibre/contour-layer',
       name: 'maplibre-contour-layer',
-      component: () => import('../views/maplibre/ContourLayer.vue')
+      component: () => import('../views/maplibre/ContourLayer.vue'),
     },
     {
       path: '/google/basemap',
       name: 'google-basemap',
       component: () => import('../views/google/GoogleMap.vue'),
+    },
+
+    {
+      path: '/maplibre/geojson-layer-paths',
+      name: 'maplibre-geojson-layer-paths',
+      component: () => import('../views/maplibre/GeojsonLayerPaths.vue'),
     },
   ],
 })
