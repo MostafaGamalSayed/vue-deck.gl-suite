@@ -1,11 +1,11 @@
 <script setup>
-import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
-import { GeoJsonLayer } from '@vue-deckgl-suite/layers'
-import { scaleLinear, scaleThreshold } from 'd3-scale'
-import { onMounted, reactive, ref } from 'vue'
-import { load } from '@loaders.gl/core'
-import { CSVLoader } from '@loaders.gl/csv'
-import 'maplibre-gl/dist/maplibre-gl.css'
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
+import { GeoJsonLayer } from '@vue-deckgl-suite/layers';
+import { scaleLinear, scaleThreshold } from 'd3-scale';
+import { onMounted, reactive, ref } from 'vue';
+import { load } from '@loaders.gl/core';
+import { CSVLoader } from '@loaders.gl/csv';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 
 // Source data GeoJSON
