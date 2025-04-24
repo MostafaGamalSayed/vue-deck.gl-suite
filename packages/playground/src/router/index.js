@@ -127,6 +127,12 @@ const router = createRouter({
       name: 'maplibre-geojson-layer-paths',
       component: () => import('../views/maplibre/GeojsonLayerPaths.vue'),
     },
+
+    {
+      path: '/maplibre/arc-layer-migration',
+      name: 'maplibre-arc-layer-migration',
+      component: () => import('../views/maplibre/ArcLayerMigration.vue')
+    }
   ],
 })
 
