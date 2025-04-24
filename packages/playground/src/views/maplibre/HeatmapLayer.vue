@@ -1,5 +1,5 @@
 <script setup>
-import {  Map, DeckGL } from '@vue-deckgl-suite/maplibre'
+import { Map, DeckGL } from '@vue-deckgl-suite/maplibre'
 import { HeatmapLayer } from '@deck.gl/aggregation-layers'
 // import { HeatmapLayer } from '@vue-deckgl-suite/layers'
 
@@ -10,10 +10,10 @@ const layer = new HeatmapLayer({
   data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json',
 
   aggregation: 'SUM',
-  getPosition: d => d.COORDINATES,
-  getWeight: d => d.SPACES,
-  radiusPixels: 25
-});
+  getPosition: (d) => d.COORDINATES,
+  getWeight: (d) => d.SPACES,
+  radiusPixels: 25,
+})
 </script>
 
 <template>
@@ -27,14 +27,14 @@ const layer = new HeatmapLayer({
       :pitch="30"
       :bearing="0"
     />
-<!--    <HeatmapLayer-->
-<!--      id="HeatmapLayer"-->
-<!--      :data="'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json'"-->
-<!--      :aggregation="'SUM'"-->
-<!--      :getPosition="d => d.COORDINATES"-->
-<!--      :getWeight="d => d.SPACES"-->
-<!--      :radiusPixels="25"-->
-<!--    />-->
+    <!--    <HeatmapLayer-->
+    <!--      id="HeatmapLayer"-->
+    <!--      :data="'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json'"-->
+    <!--      :aggregation="'SUM'"-->
+    <!--      :getPosition="d => d.COORDINATES"-->
+    <!--      :getWeight="d => d.SPACES"-->
+    <!--      :radiusPixels="25"-->
+    <!--    />-->
   </DeckGL>
 </template>
 

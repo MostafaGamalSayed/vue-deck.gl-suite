@@ -12,12 +12,12 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
         id="PathLayer"
         data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-lines.json"
         :getColor="
-        (d) => {
-          const hex = d.color
-          // convert to RGB
-          return hex.match(/[0-9a-f]{2}/g).map((x) => parseInt(x, 16))
-        }
-      "
+          (d) => {
+            const hex = d.color
+            // convert to RGB
+            return hex.match(/[0-9a-f]{2}/g).map((x) => parseInt(x, 16))
+          }
+        "
         :getPath="(d) => d.path"
         :getWidth="100"
         :pickable="true"

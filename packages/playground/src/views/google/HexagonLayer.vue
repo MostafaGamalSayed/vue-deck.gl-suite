@@ -17,13 +17,8 @@ const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY
 </script>
 
 <template>
-  <DeckGL :get-tooltip="({object}) => object && `Count: ${object.elevationValue}`">
-    <Map
-      height="100vh"
-      :center="{ lat: 37.74, lng: -122.4 }"
-      :zoom="11"
-      :api-key="GOOGLE_KEY"
-    />
+  <DeckGL :get-tooltip="({ object }) => object && `Count: ${object.elevationValue}`">
+    <Map height="100vh" :center="{ lat: 37.74, lng: -122.4 }" :zoom="11" :api-key="GOOGLE_KEY" />
     <ArcLayer
       id="2"
       data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json"

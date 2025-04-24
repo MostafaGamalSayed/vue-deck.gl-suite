@@ -4,7 +4,6 @@ import { PointCloudLayer } from '@vue-deckgl-suite/layers'
 import { COORDINATE_SYSTEM } from '@deck.gl/core'
 
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
-
 </script>
 
 <template>

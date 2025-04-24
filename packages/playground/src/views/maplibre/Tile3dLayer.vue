@@ -40,8 +40,8 @@ const layers = new Tile3DLayer({
         data="https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/SanFrancisco_Bldgs/SceneServer/layers/0"
         :loader="I3SLoader"
         :loadOptions="{
-            i3s: {useCompressedTextures: false}
-          }"
+          i3s: { useCompressedTextures: false },
+        }"
       />
     </Map>
   </DeckGL>

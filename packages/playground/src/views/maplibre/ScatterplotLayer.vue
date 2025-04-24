@@ -6,7 +6,7 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 </script>
 
 <template>
-  <DeckGL :getTooltip="({object}) => object && object.name">
+  <DeckGL :getTooltip="({ object }) => object && object.name">
     <Map
       height="100vh"
       :style
@@ -14,18 +14,17 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
       :zoom="11"
       :max-zoom="20"
       :pitch="30"
-      :bearing="0"
-    />
+      :bearing="0" />
     <ScatterplotLayer
       id="ScatterplotLayer"
       :data="'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-stations.json'"
       :stroked="true"
-      :getPosition="d => d.coordinates"
-      :getRadius="d => Math.sqrt(d.exits)"
+      :getPosition="(d) => d.coordinates"
+      :getRadius="(d) => Math.sqrt(d.exits)"
       :getFillColor="[255, 140, 0]"
       :getLineColor="[0, 0, 0]"
       :getLineWidth="10"
       :radiusScale="6"
       :pickable="true"
-    /></DeckGL>
+  /></DeckGL>
 </template>

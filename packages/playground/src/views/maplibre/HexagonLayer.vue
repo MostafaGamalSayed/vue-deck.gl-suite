@@ -15,11 +15,10 @@ const colorRange = ref([
 const radius = ref(200)
 
 const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
-
 </script>
 
 <template>
-  <DeckGL :get-tooltip="({object}) => object && `Count: ${object.elevationValue}`">
+  <DeckGL :get-tooltip="({ object }) => object && `Count: ${object.elevationValue}`">
     <Map
       height="100vh"
       :style

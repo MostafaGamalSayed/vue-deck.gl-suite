@@ -15,7 +15,7 @@ const colorRange = [
 </script>
 
 <template>
-  <DeckGL :get-tooltip="({object}) => object && `Count: ${object.elevationValue}`">
+  <DeckGL :get-tooltip="({ object }) => object && `Count: ${object.elevationValue}`">
     <Map
       height="100vh"
       :style

@@ -8,8 +8,6 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 const iconAtlas = new URL('icon-data/location-icon-atlas.png', import.meta.url).href
 const iconMapping = new URL('icon-data/location-icon-mapping.json', import.meta.url).href
 
-
-
 // const layer = new IconLayer({
 //   id: 'icon',
 //   data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json',
@@ -39,10 +37,10 @@ const iconMapping = new URL('icon-data/location-icon-mapping.json', import.meta.
       id="icon"
       data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/icon/meteorites.json"
       :pickable="true"
-      :get-position="d => d.coordinates"
+      :get-position="(d) => d.coordinates"
       :icon-atlas
       :icon-mapping
-      :get-icon="d => 'marker'"
+      :get-icon="(d) => 'marker'"
       size-units="meters"
       :size-scale="2000"
       :size-min-pixels="6"
