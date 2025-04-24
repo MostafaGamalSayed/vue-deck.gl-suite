@@ -1,11 +1,11 @@
 <script setup>
-import { DeckGL, Map } from '@vue-deckgl-suite/maplibre';
-import { GeoJsonLayer } from '@vue-deckgl-suite/layers';
-import { scaleLinear, scaleThreshold } from 'd3-scale';
-import { onMounted, reactive, ref } from 'vue';
-import { load } from '@loaders.gl/core';
-import { CSVLoader } from '@loaders.gl/csv';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
+import { GeoJsonLayer } from '@vue-deckgl-suite/layers'
+import { scaleLinear, scaleThreshold } from 'd3-scale'
+import { onMounted, reactive, ref } from 'vue'
+import { load } from '@loaders.gl/core'
+import { CSVLoader } from '@loaders.gl/csv'
+import 'maplibre-gl/dist/maplibre-gl.css'
 
 
 // Source data GeoJSON
@@ -90,7 +90,7 @@ function renderTooltip({ object, x, y }) {
       fontSize: '12px',
       padding: '8px',
       background: '#000',
-      color: '#fff',
+      color: '#777',
       minWidth: '160px',
       maxHeight: '240px',
       overflowY: 'hidden'
@@ -114,9 +114,61 @@ onMounted(async () => {
 # Highway Safety in the US
 Fatal accidents on U.S. highways (1990 - 2015).
 
-**Data source**: [National Highway Traffic Safty Administration](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars)  
-**No. of Paths**: 126.0K  
-**No. of Vertices**: 404.9K
+<ClientOnly>
+<p>Fatalities per 1,000 miles:</p>
+<div style="display: flex; justify-content: space-between; width: 500px; margin: 20px 0;">
+  <div style="background: rgb(102, 189, 99); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">0</span>
+  </div>
+  <div style="background: rgb(166, 217, 106); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">4</span>
+  </div>
+  <div style="background: rgb(217, 239, 139); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">18</span>
+  </div>
+  <div style="background: rgb(255, 255, 191); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">12</span>
+  </div>
+  <div style="background: rgb(254, 224, 139); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">20</span>
+  </div>
+  <div style="background: rgb(253, 174, 97); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">32</span>
+  </div>
+  <div style="background: rgb(244, 109, 67); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">52</span>
+  </div>
+  <div style="background: rgb(215, 48, 39); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">84</span>
+  </div>
+  <div style="background: rgb(168, 0, 0); flex: 1; height: 12px; position: relative;">
+    <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">136</span>
+  </div>
+</div>
+</ClientOnly>
+
+<ClientOnly>
+  <div style="margin-top: 30px; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 400px;">
+        <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: bold;">126.0K</div>
+            <div style="font-size: 14px; color: #777; margin-top: 5px;">No. of Paths</div>
+        </div>
+        <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: bold;">404.9K</div>
+            <div style="font-size: 14px; color: #777; margin-top: 5px;">No. of Vertices</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px; font-size: 14px; color: #555;">
+      Data source: 
+      <a href="https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars" 
+         target="_blank" 
+         style="color: #007bff; text-decoration: none;">
+        National Highway Traffic Safety Administration
+      </a>
+    </div>
+  </div>
+</ClientOnly>
 
 <ClientOnly>
   <DeckGL :get-tooltip="renderTooltip">
@@ -248,7 +300,7 @@ Fatal accidents on U.S. highways (1990 - 2015).
         fontSize: '12px',
         padding: '8px',
         background: '#000',
-        color: '#fff',
+        color: '#777',
         minWidth: '160px',
         maxHeight: '240px',
         overflowY: 'hidden',

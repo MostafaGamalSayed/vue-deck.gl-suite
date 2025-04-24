@@ -3,13 +3,13 @@ import { DeckGL, Map } from '@vue-deckgl-suite/maplibre'
 import { HexagonLayer } from '@vue-deckgl-suite/layers'
 import { AmbientLight, LightingEffect, PointLight } from '@deck.gl/core'
 import { onMounted, ref } from 'vue'
-import { CSVLoader } from '@loaders.gl/csv';
-import { load } from '@loaders.gl/core';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { CSVLoader } from '@loaders.gl/csv'
+import { load } from '@loaders.gl/core'
+import 'maplibre-gl/dist/maplibre-gl.css'
 
 
-const data = ref(null);
-const elevationScale = ref(0); // Elevation scale starts at 0 for animation
+const data = ref(null)
+const elevationScale = ref(0) // Elevation scale starts at 0 for animation
 
 const colorRange = [
   [1, 152, 189],
@@ -70,8 +70,39 @@ onMounted(async () => {
 # Personal injury road accidents in GB from 1979
 The layer aggregates data within the boundary of each hexagon cell.
 
-**Data source**: [DATA.GOV.UK](https://data.gov.uk)  
-**Total Accidents**: 140.1K
+<ClientOnly>
+<div style="display: flex; flex-direction: column; align-items: center; width: 500px">
+  <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px; font-size: 12px; color: #777;">
+    <span>Fewer Accidents</span>
+    <span>More Accidents</span>
+  </div>
+  <div style="display: flex; width: 100%; height: 12px;">
+    <div style="background: rgb(1, 152, 189); flex: 1;"></div>
+    <div style="background: rgb(73, 227, 206); flex: 1;"></div>
+    <div style="background: rgb(216, 254, 181); flex: 1;"></div>
+    <div style="background: rgb(254, 237, 177); flex: 1;"></div>
+    <div style="background: rgb(254, 173, 84); flex: 1;"></div>
+    <div style="background: rgb(209, 55, 78); flex: 1;"></div>
+  </div>
+</div>
+</ClientOnly>
+
+<ClientOnly>
+  <div style="margin-top: 30px; margin-bottom: 20px;">
+    <div style="width: 400px;">
+      <div style="font-size: 36px; font-weight: bold;">140.1K</div>
+      <div style="font-size: 14px; color: #777; margin-top: 5px;">Total Accidents</div>
+    </div>
+    <div style="margin-top: 20px; font-size: 14px; color: #555;">
+      Data source: 
+      <a href="https://data.gov.uk" 
+         target="_blank" 
+         style="color: #007bff; text-decoration: none;">
+        DATA.GOV.UK
+      </a>
+    </div>
+  </div>
+</ClientOnly>
 <ClientOnly>
     <DeckGL :get-tooltip="getTooltip" :effects="[lightingEffect]">
     <Map
