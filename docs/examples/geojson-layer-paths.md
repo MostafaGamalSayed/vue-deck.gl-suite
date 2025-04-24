@@ -116,7 +116,7 @@ Fatal accidents on U.S. highways (1990 - 2015).
 
 <ClientOnly>
 <p>Fatalities per 1,000 miles:</p>
-<div style="display: flex; justify-content: space-between; width: 500px; margin: 20px 0;">
+<div style="display: flex; justify-content: space-between; width: 300px; margin: 20px 0;">
   <div style="background: rgb(102, 189, 99); flex: 1; height: 12px; position: relative;">
     <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; color: #777;">0</span>
   </div>
@@ -149,7 +149,7 @@ Fatal accidents on U.S. highways (1990 - 2015).
 
 <ClientOnly>
   <div style="margin-top: 30px; margin-bottom: 20px;">
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 400px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 300px;">
         <div style="text-align: center;">
             <div style="font-size: 36px; font-weight: bold;">126.0K</div>
             <div style="font-size: 14px; color: #777; margin-top: 5px;">No. of Paths</div>

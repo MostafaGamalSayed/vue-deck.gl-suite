@@ -71,7 +71,7 @@ onMounted(async () => {
 The layer aggregates data within the boundary of each hexagon cell.
 
 <ClientOnly>
-<div style="display: flex; flex-direction: column; align-items: center; width: 500px">
+<div style="display: flex; flex-direction: column; align-items: center; width: 300px">
   <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px; font-size: 12px; color: #777;">
     <span>Fewer Accidents</span>
     <span>More Accidents</span>
