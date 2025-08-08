@@ -119,6 +119,15 @@ function sidebarLayers(): DefaultTheme.SidebarItem[] {
     { text: 'Polygon Layer', link: '/layers/polygon-layer' },
     { text: 'Contour Layer', link: '/layers/contour-layer' },
     { text: 'Scatterplot Layer', link: '/layers/scatterplot-layer' },
+    { text: 'Heatmap Layer', link: '/layers/heatmap-layer' },
+    { text: 'Bitmap Layer', link: '/layers/bitmap-layer' },
+    { text: 'Line Layer', link: '/layers/line-layer' },
+    { text: 'Solid Polygon Layer', link: '/layers/solid-polygon-layer' },
+    { text: 'Text Layer', link: '/layers/text-layer' },
+    { text: 'Grid Cell Layer', link: '/layers/grid-cell-layer' },
+    { text: 'Screen Grid Layer', link: '/layers/screen-grid-layer' },
+    { text: 'MVT Layer', link: '/layers/mvt-layer' },
+    { text: 'Terrain Layer', link: '/layers/terrain-layer' },
     { text: 'WMS Layer', link: '/layers/wms-layer' },
   ]
 }
@@ -137,6 +146,15 @@ function sidebarExamples(): DefaultTheme.SidebarItem[] {
     { text: 'Polygon Layer', link: '/examples/polygon-layer' },
     { text: 'Contour Layer', link: '/examples/contour-layer' },
     { text: 'Scatterplot Layer', link: '/examples/scatterplot-layer' },
+    { text: 'Heatmap Layer', link: '/examples/heatmap-layer' },
+    { text: 'Bitmap Layer', link: '/examples/bitmap-layer' },
+    { text: 'Line Layer', link: '/examples/line-layer' },
+    { text: 'Solid Polygon Layer', link: '/examples/solid-polygon-layer' },
+    { text: 'Text Layer', link: '/examples/text-layer' },
+    { text: 'Grid Cell Layer', link: '/examples/grid-cell-layer' },
+    { text: 'Screen Grid Layer', link: '/examples/screen-grid-layer' },
+    { text: 'MVT Layer', link: '/examples/mvt-layer' },
+    { text: 'Terrain Layer', link: '/examples/terrain-layer' },
     { text: 'WMS Layer', link: '/examples/wms-layer' },
   ]
 }
