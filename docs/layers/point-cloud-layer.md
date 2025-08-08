@@ -89,10 +89,10 @@ Below are the props available for configuring the `PointCloudLayer`:
 |-------------------|--------------------|---------------------|-----------------------------------------------------------------------------------------------|
 | `sizeUnits`       | `String`          | `'pixels'`          | Units for specifying the size of points. Can be `'pixels'`, `'meters'`, or `'common'`.       |
 | `pointSize`       | `Number`          | `10`                | Global size of the points, in units defined by `sizeUnits`.                                   |
-| `material`        | `Object|Boolean`  | `true`              | Material settings for lighting effects. See [Lighting Guide](https://deck.gl/docs/developer-guide/using-lighting). |
+| `material`        | `Object\|Boolean`  | `true`              | Material settings for lighting effects. See [Lighting Guide](https://deck.gl/docs/developer-guide/using-lighting). |
 | `getPosition`     | `Function`        | `object => object.position` | Accessor function for point positions in the format `[x, y, z]`.                              |
-| `getNormal`       | `Function|Array`  | `[0, 0, 1]`         | Accessor or default value for the normals of the points.                                      |
-| `getColor`        | `Function|Array`  | `[0, 0, 0, 255]`    | Accessor or default RGBA color for the points.                                                |
+| `getNormal`       | `Function\|Array`  | `[0, 0, 1]`         | Accessor or default value for the normals of the points.                                      |
+| `getColor`        | `Function\|Array`  | `[0, 0, 0, 255]`    | Accessor or default RGBA color for the points.                                                |
 | `coordinateSystem`| `Number`          | `COORDINATE_SYSTEM.METER_OFFSETS` | Coordinate system for the layer's points.                                                    |
 | `coordinateOrigin`| `Array`           | `[-122.4, 37.74]`   | Origin point for `COORDINATE_SYSTEM.METER_OFFSETS`.                                           |
 
