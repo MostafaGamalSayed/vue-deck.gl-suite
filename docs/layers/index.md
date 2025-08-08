@@ -38,20 +38,23 @@ Here is a list of the layers available in `@vue-deckgl-suite/layers`. Each provi
 - **[GeoJson Layer](/layers/geojson-layer/):** Visualizes GeoJSON data with full feature support.
 - **[Hexagon Layer](/layers/hexagon-layer/):** Aggregates scattered data points into hexagonal grids.
 - **[Grid Layer](/layers/grid-layer/):** Organizes and visualizes points within rectangular grids.
-- **[Column Layer](/layers/column-layer/):** Visualizes data as vertical cylinders, useful for 3D geospatial data
-  representation.
+- **[Column Layer](/layers/column-layer/):** Visualizes data as vertical cylinders, useful for 3D geospatial data representation.
 - **[Path Layer](/layers/path-layer/):** Plots point-to-point paths or line segments on a map.
 - **[Trips Layer](/layers/trips-layer/):** Animates trips or movement data over time.
 - **[Icon Layer](/layers/icon-layer/):** Renders icons or images at specific geospatial positions.
-- **[Point Cloud Layer](/layers/point-cloud-layer/):** Renders 3D point clouds, typically used for visualizing large
-  sets of points in space.
-- **[Polygon Layer](/layers/polygon-layer/):** Renders filled or stroked polygons, useful for visualizing areas,
-  boundaries, or other polygon-based data.
-- **[Contour Layer](/layers/contour-layer/):** Generates contour lines or filled contour regions, useful for visualizing
-  elevation or density data.
-
-- **[Scatterplot Layer](/layers/scatterplot-layer/):** Renders scatter points with options to customize size, color, and
-  opacity for data visualization.
+- **[Point Cloud Layer](/layers/point-cloud-layer/):** Renders 3D point clouds, typically used for visualizing large sets of points in space.
+- **[Polygon Layer](/layers/polygon-layer/):** Renders filled or stroked polygons, useful for visualizing areas, boundaries, or other polygon-based data.
+- **[Contour Layer](/layers/contour-layer/):** Generates contour lines or filled contour regions, useful for visualizing elevation or density data.
+- **[Scatterplot Layer](/layers/scatterplot-layer/):** Renders scatter points with options to customize size, color, and opacity for data visualization.
+- **[Heatmap Layer](/layers/heatmap-layer/):** Visualizes the density of points as a smooth heat field.
+- **[Bitmap Layer](/layers/bitmap-layer/):** Overlays a static image over specified bounds.
+- **[Line Layer](/layers/line-layer/):** Renders straight line segments between coordinates.
+- **[Solid Polygon Layer](/layers/solid-polygon-layer/):** Renders filled/extruded polygons.
+- **[Text Layer](/layers/text-layer/):** Renders text labels at coordinates.
+- **[Grid Cell Layer](/layers/grid-cell-layer/):** Renders a grid of rectangular cells with elevation.
+- **[Screen Grid Layer](/layers/screen-grid-layer/):** Aggregates points into screen-aligned grid cells.
+- **[MVT Layer](/layers/mvt-layer/):** Renders vector tiles (Mapbox Vector Tile format).
+- **[Terrain Layer](/layers/terrain-layer/):** Renders photorealistic terrain from elevation tiles.
 - **[WMS Layer](/layers/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
 
 Learn more about each layer by visiting its dedicated page.

@@ -22,6 +22,14 @@ Explore the interactive examples below to learn how to use different layers in *
 - **[Scatterplot Layer](/examples/scatterplot-layer/):** Renders scatter points with options to customize size, color, and
   opacity for data visualization.
 - **[WMS Layer](/examples/wms-layer/):** Displays map tiles from a Web Map Service endpoint.
+- **[Bitmap Layer](/examples/bitmap-layer/):** Overlays a static image over specified bounds.
+- **[Line Layer](/examples/line-layer/):** Renders straight line segments between coordinates.
+- **[Solid Polygon Layer](/examples/solid-polygon-layer/):** Renders filled/extruded polygons.
+- **[Grid Cell Layer](/examples/grid-cell-layer/):** Renders a grid of rectangular cells with elevation.
+- **[Screen Grid Layer](/examples/screen-grid-layer/):** Aggregates points into screen-aligned grid cells.
+- **[MVT Layer](/examples/mvt-layer/):** Renders vector tiles (Mapbox Vector Tile format).
+- **[Terrain Layer](/examples/terrain-layer/):** Renders photorealistic terrain from elevation tiles.
+- **[Text Layer](/examples/text-layer/):** Renders text labels at coordinates.
 
 Learn more about each layer by visiting its dedicated page.
 
