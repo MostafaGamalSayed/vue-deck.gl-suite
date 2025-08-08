@@ -11,8 +11,8 @@ export default defineComponent({
     // Use `useLayer` for layer lifecycle management
     const { layer } = useLayer(
       (opts) => new HeatmapLayer(opts as any), // Layer factory function
-      props,
-      heatmapPropsKeys,
+      props as any,
+      heatmapPropsKeys as any,
       emit,
     )
 
