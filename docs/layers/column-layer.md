@@ -105,12 +105,12 @@ Below are the props available for configuring the `ColumnLayer`:
 | `lineWidthScale`     | `Number`          | `1`                           | Multiplier for the column outline's line width.                                                |
 | `lineWidthMinPixels` | `Number`          | `0`                           | Minimum width of the column outline in pixels.                                                 |
 | `lineWidthMaxPixels` | `Number`          | `Number.MAX_SAFE_INTEGER`     | Maximum width of the column outline in pixels.                                                 |
-| `material`           | `Object|Boolean`  | `true`                        | Material settings for lighting effects (works if `extruded` is `true`). See [Lighting Guide](https://deck.gl/docs/developer-guide/using-lighting). |
+| `material`           | `Object\|Boolean`  | `true`                        | Material settings for lighting effects (works if `extruded` is `true`). See [Lighting Guide](https://deck.gl/docs/developer-guide/using-lighting). |
 | `getPosition`        | `Function`        | `object => object.position`   | Accessor to compute the position of the column's center.                                       |
-| `getFillColor`       | `Function|Array`  | `[0, 0, 0, 255]`              | Accessor for the fill color of the column.                                                     |
-| `getLineColor`       | `Function|Array`  | `[0, 0, 0, 255]`              | Accessor for the outline color of the column.                                                  |
-| `getElevation`       | `Function|Number` | `1000`                        | Accessor for the elevation (height) of the column.                                             |
-| `getLineWidth`       | `Function|Number` | `1`                           | Accessor for the width of the column outline.                                                  |
+| `getFillColor`       | `Function\|Array`  | `[0, 0, 0, 255]`              | Accessor for the fill color of the column.                                                     |
+| `getLineColor`       | `Function\|Array`  | `[0, 0, 0, 255]`              | Accessor for the outline color of the column.                                                  |
+| `getElevation`       | `Function\|Number` | `1000`                        | Accessor for the elevation (height) of the column.                                             |
+| `getLineWidth`       | `Function\|Number` | `1`                           | Accessor for the width of the column outline.                                                  |
 
 ## Events
 
