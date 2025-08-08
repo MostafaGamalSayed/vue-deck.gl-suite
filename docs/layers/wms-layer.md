@@ -72,7 +72,7 @@ Below are the props available for configuring the `WMSLayer`:
 
 | Prop                  | Type                 | Default                      | Description                                                                                          |
 |-----------------------|----------------------|------------------------------|------------------------------------------------------------------------------------------------------|
-| `data`               | `String | Object`   | `null`                       | URL for the WMS server or the dataset object providing WMS source information.                      |
+| `data`               | `String \| Object`   | `null`                       | URL for the WMS server or the dataset object providing WMS source information.                      |
 | `serviceType`        | `String`            | `'auto'`                     | Specifies the service type. For WMS, set it as `'wms'`.                                             |
 | `layers`             | `Array`             | `[]`                         | Array of layer names to request from the WMS service.                                               |
 | `srs`                | `String`            | `'auto'`                     | Spatial Reference System to use for the map projection.                                             |

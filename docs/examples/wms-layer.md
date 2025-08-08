@@ -8,7 +8,33 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 
 # WMS Layer Example
 
-Here’s an example that demonstrates how to integrate the **WMS Layer**:
+## Dataset Used
+- OpenStreetMap WMS service provided by terrestris.
+- Service URL: https://ows.terrestris.de/osm/service
+- Layer: OSM-WMS
+
+## Map Visualization
+The WMS layer is requested as tiles and displayed beneath Deck.gl overlays:
+
+<ClientOnly>
+  <DeckGL>
+    <Map 
+      height="400px"
+      :style
+      :center="[-122.4, 37.74]" 
+      :zoom="9" 
+      :min-zoom="1" 
+      :max-zoom="20"
+    >
+      <WMSLayer
+        id="demo-wms-layer"
+        data="https://ows.terrestris.de/osm/service"
+        :layers="['OSM-WMS']"
+        service-type="wms"
+      />
+    </Map>
+  </DeckGL>
+</ClientOnly>
 
 ```vue
 <script setup>
@@ -35,23 +61,3 @@ const style = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 @import 'maplibre-gl/dist/maplibre-gl.css';
 </style>
 ```
-
-<ClientOnly>
-  <DeckGL>
-    <Map 
-      height="400px"
-      :style
-      :center="[-122.4, 37.74]" 
-      :zoom="9" 
-      :min-zoom="1" 
-      :max-zoom="20"
-    >
-      <WMSLayer
-        id="demo-wms-layer"
-        data="https://ows.terrestris.de/osm/service"
-        :layers="['OSM-WMS']"
-        service-type="wms"
-      />
-    </Map>
-  </DeckGL>
-</ClientOnly>
