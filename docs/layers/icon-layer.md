@@ -102,15 +102,15 @@ Below are the props available for configuring the `IconLayer`:
 | `sizeMinPixels`       | `Number`             | `0`                           | Minimum size of icons in pixels, regardless of scale.                                                       |
 | `sizeMaxPixels`       | `Number`             | `Number.MAX_SAFE_INTEGER`     | Maximum size of icons in pixels, regardless of scale.                                                       |
 | `iconAtlas`           | `String`             | `undefined`                   | URL to the icon atlas (a single image containing multiple icons).                                            |
-| `iconMapping`         | `Object | String`    | `undefined`                   | A mapping of icon identifiers to the regions of the atlas containing those icons.                           |
+| `iconMapping`         | `Object \| String`    | `undefined`                   | A mapping of icon identifiers to the regions of the atlas containing those icons.                           |
 | `billboard`           | `Boolean`            | `true`                        | Whether the icons always face the camera.                                                                   |
 | `alphaCutoff`         | `Number`             | `0.5`                         | Alpha cut-off value for discarding transparent pixels.                                                      |
 | `loadOptions`         | `Object`             | `undefined`                   | Load options to pass to loaders when loading textures.                                                      |
 | `textureParameters`   | `Object`             | `undefined`                   | Custom WebGL texture parameters.                                                                            |
-| `getAngle`            | `Function | Number`  | `0`                           | Function or value to compute the rotation angle of icons.                                                   |
+| `getAngle`            | `Function \| Number`  | `0`                           | Function or value to compute the rotation angle of icons.                                                   |
 | `getPosition`         | `Function`           | `(x) => x?.position`          | Function to compute the position of each icon.                                                              |
-| `getSize`             | `Function | Number`  | `1`                           | Function or value to compute the size of the icons.                                                         |
-| `getColor`            | `Function | Array`   | `[255, 255, 255, 255]`        | Function or value to compute the color of the icons.                                                        |
+| `getSize`             | `Function \| Number`  | `1`                           | Function or value to compute the size of the icons.                                                         |
+| `getColor`            | `Function \| Array`   | `[255, 255, 255, 255]`        | Function or value to compute the color of the icons.                                                        |
 | `getIcon`             | `Function`           | `(x) => x?.icon`              | Function to specify which icon in the atlas to display.                                                     |
 | `onIconError`         | `Function`           | `undefined`                   | Callback triggered when a new icon fails to load from the atlas.                                            |
 
