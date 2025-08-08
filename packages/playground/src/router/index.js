@@ -117,6 +117,41 @@ const router = createRouter({
       component: () => import('../views/maplibre/ContourLayer.vue'),
     },
     {
+      path: '/maplibre/bitmap-layer',
+      name: 'maplibre-bitmap-layer',
+      component: () => import('../views/maplibre/BitmapLayer.vue'),
+    },
+    {
+      path: '/maplibre/line-layer',
+      name: 'maplibre-line-layer',
+      component: () => import('../views/maplibre/LineLayer.vue'),
+    },
+    {
+      path: '/maplibre/text-layer',
+      name: 'maplibre-text-layer',
+      component: () => import('../views/maplibre/TextLayer.vue'),
+    },
+    {
+      path: '/maplibre/grid-cell-layer',
+      name: 'maplibre-grid-cell-layer',
+      component: () => import('../views/maplibre/GridCellLayer.vue'),
+    },
+    {
+      path: '/maplibre/screen-grid-layer',
+      name: 'maplibre-screen-grid-layer',
+      component: () => import('../views/maplibre/ScreenGridLayer.vue'),
+    },
+    {
+      path: '/maplibre/mvt-layer',
+      name: 'maplibre-mvt-layer',
+      component: () => import('../views/maplibre/MVTLayer.vue'),
+    },
+    {
+      path: '/maplibre/terrain-layer',
+      name: 'maplibre-terrain-layer',
+      component: () => import('../views/maplibre/TerrainLayer.vue'),
+    },
+    {
       path: '/google/basemap',
       name: 'google-basemap',
       component: () => import('../views/google/GoogleMap.vue'),
