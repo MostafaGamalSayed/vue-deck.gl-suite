@@ -89,12 +89,12 @@ The **Polygon Layer** supports several props for customization, including inheri
 
 | **Prop**                  | **Type**           | **Default**               | **Description**                                                                                   |
 |---------------------------|--------------------|---------------------------|---------------------------------------------------------------------------------------------------|
-| `data`                    | `String|Array`     | `undefined`               | URL or array of polygon data.                                                                    |
+| `data`                    | `String\|Array`     | `undefined`               | URL or array of polygon data.                                                                    |
 | `getPolygon`              | `Function`         | `(f) => f.polygon`        | Specifies how to access polygon coordinates from the data.                                       |
-| `getFillColor`            | `Function|Array`   | `[0, 0, 0, 255]`          | Sets the fill color of the polygons.                                                             |
-| `getLineColor`            | `Function|Array`   | `[0, 0, 0, 255]`          | Sets the color of the polygon outline.                                                           |
-| `getLineWidth`            | `Function|Number`  | `1`                       | Specifies the width of the polygon's border.                                                     |
-| `getElevation`            | `Function|Number`  | `1000`                    | Specifies the height of the polygon when `extruded` is enabled.                                  |
+| `getFillColor`            | `Function\|Array`   | `[0, 0, 0, 255]`          | Sets the fill color of the polygons.                                                             |
+| `getLineColor`            | `Function\|Array`   | `[0, 0, 0, 255]`          | Sets the color of the polygon outline.                                                           |
+| `getLineWidth`            | `Function\|Number`  | `1`                       | Specifies the width of the polygon's border.                                                     |
+| `getElevation`            | `Function\|Number`  | `1000`                    | Specifies the height of the polygon when `extruded` is enabled.                                  |
 | `stroked`                 | `Boolean`          | `true`                    | Determines whether the polygon's outline is rendered.                                            |
 | `filled`                  | `Boolean`          | `true`                    | Determines whether the polygon is filled.                                                        |
 | `extruded`                | `Boolean`          | `false`                   | Enables 3D extrusion of the polygons.                                                            |
