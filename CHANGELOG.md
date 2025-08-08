@@ -1,3 +1,24 @@
+## [v1.0.0-beta.5] - 2025-08-08
+
+### ✨ New Features:
+
+- **Support for New Layers:**
+  - Added the following Deck.gl layer components to `@vue-deckgl-suite/layers` for declarative use:
+    - `HeatmapLayer`
+    - `BitmapLayer`
+    - `LineLayer`
+    - `SolidPolygonLayer`
+    - `TextLayer`
+    - `GridCellLayer`
+    - `ScreenGridLayer`
+    - `MVTLayer`
+    - `TerrainLayer`
+  - These layers are now exported from the package and can be used directly within `<DeckGL>`.
+
+
+
+
+
 ## [v1.0.0-beta.4] - 2025-04-20
 
 ### ✨ New Features:

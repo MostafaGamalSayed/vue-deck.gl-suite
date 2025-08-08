@@ -1,7 +1,7 @@
 {
   "name": "@vue-deckgl-suite/layers",
   "description": "Provides Deck.gl layers as Vue 3 components for creating interactive and high-performance geospatial visualizations.",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "author": {
     "name": "Mostafa Gamal",
     "email": "mostafagamal99418@gmail.com"
